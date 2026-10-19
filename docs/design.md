@@ -8,7 +8,7 @@ A UI-driven life sim: a life made of small choices, in a town full of other peop
 
 **Setting:** a fictional northern UK town, present day. Estates, high street, a council, a cab firm, a chippy, a burger shop, pubs.
 
-**Platforms:** PC and mobile. Every screen is built from shared components that sit side by side on PC and stack on mobile.
+**Platforms:** PC via Steam (Windows first, then Linux and Steam Deck). Consoles may follow. Mobile is not a target. Every screen is built from shared components that sit side by side on a desktop display and stack on narrow or handheld screens.
 
 **Who it's for:** players who want effort to turn into something lasting, a world that reacts believably, and a game that keeps needing them. Not players after spectacle or random drama.
 
@@ -193,11 +193,11 @@ The context sets what's at stake, the conversation writes memories to the speake
 | Stopped by police | Yes | Yes | Yes | Yes |  |  |
 | Any drop-off or end of shift |  |  |  |  |  | Yes |
 
-**PC and mobile layout**
+**Wide and narrow layout**
 
-- **PC:** components sit side by side. Map and work on the left, speaker, context and conversation on the right, a status bar across the top.
-- **Mobile:** one component per view, stacked in beat order. The conversation takes the full screen when a timer is running, so a choice is never off-screen.
-- **Both:** the status bar (day, time, money, energy) stays visible everywhere.
+- **Wide (desktop):** components sit side by side. Map and work on the left, speaker, context and conversation on the right, a status bar across the top.
+- **Narrow (Steam Deck at 1280×800, small windows):** fewer components per view, stacked in beat order. The conversation takes the full screen when a timer is running, so a choice is never off-screen.
+- **Both:** the status bar (day, time, money, energy) stays visible everywhere, and everything is reachable with a controller.
 
 ## Conversations and timers
 
@@ -306,19 +306,20 @@ pressure = pressure × 0.75 + max(0, score − 30)
 
 ## Data and storage
 
-The data is the game; the engine is a viewer. Content, dialogue and strings are identical everywhere, and the simulation is deterministic: the same seed and choices always give the same result.
+The data is the game; the engine is a viewer. Content is authored as Godot Resources, saves are versioned binary files, and the simulation is deterministic: the same seed and choices always give the same result.
 
 **Formats**
 
 | Data | Format | Notes |
 | --- | --- | --- |
-| Content (jobs, traits, life cards, places) | YAML, validated by JSON Schema | Baked to JSON at build; the game never reads hand-written files |
-| Balancing numbers | Spreadsheet, exported to CSV | Pay, energy costs and odds side by side |
-| Dialogue | Ink | Branching conversation with state |
-| Player-facing text | CSV string tables | Key, English, other languages |
-| Saves | JSON (gzip); MessagePack later if size matters | Versioned, with migration code |
+| Content (jobs, activities, traits, life cards, places) | Custom `Resource` classes saved as `.tres` | Typed by the class, edited in the inspector, validated by a check script on load |
+| Dialogue | `Conversation` resources: lines, choices, conditions, timer, what silence means | Small and choice-shaped, so no external dialogue runtime. Lives in the sim so it stays deterministic |
+| Balancing numbers | Spreadsheet, exported to CSV, imported into the resources by a tool script | Pay, energy costs and odds side by side |
+| Player-facing text | CSV translation tables (`key,en,...`) | Imported by Godot's translation system |
+| Mods | JSON, converted to Resources at load | Safe to load from untrusted sources; never `ResourceLoader` on mod files |
+| Saves | Binary via `store_var`, gzip-compressed, versioned header | Migration code for every version step |
 
-The JSON Schema is the single source of truth; types for each language are generated from it.
+The Resource classes under `content/defs/` are the single source of truth for data shapes. Mod JSON and CSV imports are validated against them.
 
 **Core entities**
 
@@ -329,12 +330,13 @@ CONTENT (authored, shared)
   LifeCard      id, surface_facts[], hidden_facts[], start_stats
   TraitDef      id, effects on conversation and behaviour
   PlaceDef      id, type, map_zone
+  Conversation  id, lines[], choices[], conditions, timer, silence_means
 
 STATE (per save)
-  World         seed, day, slot, rerolls_left
+  World         seed, day, slot, rerolls_left, rng_state
   Player        money, energy, fitness, job_skills{}, auto_unlocked[]
-  Character     id, role, traits[], mood, goals[]
-  Relationship  from, to, trust, familiarity
+  Person        id, role, traits{}, needs{}, options[], pressure{}
+  Relationship  from, to, trust, resentment
   Memory        holder, about, event_id, tag, weight
   Place         def_id, owner, condition, takings
   Opportunity   id, place, deadline_day, status
@@ -343,55 +345,61 @@ STATE (per save)
 
 - Events are the source of truth: memories point at events, the overnight report is built from them.
 - Relationships run between anyone, not just the player, so characters can branch off each other.
+- State classes are plain `RefCounted` scripts with no node references, so the sim can run headless.
 
 **Save layout (full history kept)**
 
 ```
-User data folder (%APPDATA%\CappyTech\<game> or ~/.local/share/<game>)
+user:// (%APPDATA%\Godot\app_userdata\<game> or ~/.local/share/godot/app_userdata/<game>)
   saves/
     life-001/
       manifest.json      which state and history files are current, written last
       meta.json          load-screen info
-      state.json.gz      the town now, rewritten each night
+      state.sav.gz       the town now, rewritten each night
       history/
         y01.log.gz       closed years packed into one file
         y02-m01.log.gz   current year, one file per month
       index.db           SQLite index, local only, rebuildable
       backups/           last 3 snapshots
-  settings.json          per machine, not cloud-synced
+  settings.cfg           per machine, not cloud-synced
   mods/
 ```
 
 - Save on sleep; write to a temp file then rename, so a crash never corrupts a life.
 - One save slot per life, created when the cards are dealt.
 - Rough size: a 50-year life is in the region of 20 MB compressed.
+- The SQLite index needs a GDExtension (godot-sqlite). Until it is in, history is searched by scanning the logs.
 
 **Steam**
 
+- Steamworks through the GodotSteam GDExtension.
 - Steam Cloud via Auto-Cloud syncs `saves/` (quota around 100 MB per player). Closed history files upload once.
 - Achievements and stats through the Steamworks API, not the save.
-- Steam Workshop: mods are extra YAML and Ink loaded from `mods/`, overriding by ID.
+- Steam Workshop: mods are JSON and CSV loaded from `mods/`, overriding by ID.
 - Steam Deck: controller navigation and 1280×800 from the start.
 
 ## Tech stack and stages
 
-Two stages: a web prototype to prove the design fast, then a production build in Godot for Steam, with consoles reachable later. Steam is the launch target.
-
-### Stage 1: web prototype
+One engine from the start: Godot 4.7 with GDScript. The game is built in two stages inside the same project, so nothing is thrown away between them.
 
 | Layer | Choice |
 | --- | --- |
-| Language | TypeScript throughout |
-| Simulation core | Pure TS module, no UI, seeded RNG |
-| UI | Svelte (or React) |
-| Interactive work | HTML/CSS; Pixi.js where game feel matters |
-| Dialogue | Ink via inkjs |
-| Content | YAML + JSON Schema, baked to JSON |
-| Saves | Node fs with gzip; better-sqlite3 for the history index |
-| Desktop and Steam | Electron + steamworks.js |
-| Build and test | Vite, Vitest (simulation), Playwright (UI) |
+| Engine | Godot 4.7.2 (standard build, not .NET) |
+| Language | GDScript with static typing enforced (untyped declarations are errors) |
+| Simulation core | Plain scripts under `sim/`, no node or scene access, seeded `RandomNumberGenerator` carried in state |
+| UI | Godot scenes, one per component, built from a Theme generated from the tokens file |
+| Content | Custom Resources (`.tres`) under `content/`, checked by a validation script |
+| Dialogue | `Conversation` resources (see Data and storage) |
+| Saves | `FileAccess` with `store_var` and gzip, versioned |
+| Steam | GodotSteam GDExtension |
+| Tests | Headless runner (`godot --headless -s tests/run_tests.gd`) over `tests/test_*.gd`; conformance cases as JSON data |
+| CI | Forgejo Actions: headless tests, export templates, steamcmd upload |
 
-Its job is to prove the design, not ship. Plain visuals; time goes on the simulation and the choices.
+**Why GDScript, not C#:** the GDScript runtime ships on every console port, while C# support there depends on the porting partner. The cost is losing Ink; dialogue here is small and choice-shaped, so a data format covers it.
+
+### Stage 1: prove the design
+
+Plain visuals, default controls, no art. Time goes on the simulation and the choices.
 
 **Exit criteria**
 
@@ -400,31 +408,19 @@ Its job is to prove the design, not ship. Plain visuals; time goes on the simula
 - [ ] Memories and relationships visibly change outcomes
 - [ ] Played enough to know what's fun and what isn't
 
-### Stage 2: production in Godot
+### Stage 2: production
 
-Rebuild the presentation with game feel, controller support and Steam Deck in mind. GodotSteam for Steamworks. Consoles later via Godot porting partners.
+Same project. Replace the placeholder scenes with finished presentation, game feel, controller polish and Steam Deck verification. The sim, content, strings, saves and tests carry through untouched.
 
-| Carries over untouched | Rewritten |
-| --- | --- |
-| YAML content and JSON Schema | Simulation core (TS to GDScript or C#) |
-| Ink dialogue | UI components (as Godot scenes) |
-| CSV string tables |  |
-| Save format |  |
-| Design decisions and balance numbers |  |
+### Working approach (development mostly done with Claude)
 
-### Porting approach (development mostly done with Claude)
-
-The web prototype is a reference to translate from, not code to copy.
-
-1. **Conformance tests as data.** Each test is a seed, a list of choices, and the expected events and state. The TS prototype must pass them, then the Godot core must pass the same files.
-2. **Shared design tokens.** Colours, spacing and type sizes in one JSON file. The web build turns it into CSS variables; a script turns it into a Godot Theme.
-3. **Matching components.** Same names and inputs in both: `SpeakerCard` takes `{name, role, relationship, traits, memories}` in TS and in Godot.
-4. **One component at a time,** checked against the prototype with screenshots before moving on.
-5. **One repo with a `CLAUDE.md`** pointing to this doc, the schema and the tests, so every session picks up where the last left off.
+1. **Conformance tests as data.** Each test is a seed, a list of choices, and the expected events and state. They pin the sim's behaviour across refactors and tuning.
+2. **Shared design tokens.** Colours, spacing and type sizes in one JSON file, turned into a Godot Theme by a tool script. Scenes never hard-code them.
+3. **Stable components.** Six component scenes with small, data-shaped inputs: `SpeakerCard` takes `{name, role, relationship, traits, memories}`.
+4. **One component at a time,** with a screenshot in the pull request.
+5. **One repo with a `CLAUDE.md`** pointing to this doc, the content classes and the tests, so every session picks up where the last left off.
 
 Releases build through Forgejo Actions and upload to Steam with steamcmd.
-
-**Check early:** Ink support in Godot. The main integrations lean on C#, which would point the production core towards C# rather than GDScript.
 
 ## Planned update: Crime and Punishment
 
@@ -472,7 +468,8 @@ Crime arrives after launch, into a town players already care about. Any characte
 - [x] Rerolls and restarts: decided (three rerolls, restarts untracked), see The starting hand.
 - [x] Crime and punishment: planned as a post-launch update, see Planned update.
 - [ ] How you go from employee to owner: buying, inheriting, being offered.
-- [ ] What a "memory" and a "relationship" store as data.
+- [x] What a "memory" and a "relationship" store as data: decided (v0), see Data and storage.
+- [x] Engine and language: decided, Godot 4.7 with GDScript and native Resources, see Tech stack and stages.
 - [x] How other characters make their own choices: decided (v0), see People and how they decide.
 - [ ] Same town with the same core people each life, or a freshly generated town?
 - [ ] How the game ends, or whether it does: retirement, a set number of years, open-ended.

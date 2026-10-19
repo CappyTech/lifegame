@@ -1,0 +1,90 @@
+{
+  "name": "manager_quits_when_ignored",
+  "seed": 42,
+  "people": [
+    {
+      "id": "dean",
+      "role": "manager",
+      "needs": {
+        "money": 40,
+        "belonging": 45,
+        "ambition": 50,
+        "rest": 70
+      },
+      "traits": {
+        "loyal": 0.3
+      },
+      "relationships": {
+        "player": {
+          "trust": 10,
+          "resentment": 0
+        }
+      },
+      "options": [
+        {
+          "id": "quit",
+          "size": "big",
+          "base": 20,
+          "needs": {
+            "money": 0.35,
+            "belonging": 0.4
+          },
+          "traits": {
+            "loyal": -25
+          },
+          "trust": {
+            "player": -0.15
+          },
+          "memories": {
+            "talked": -2
+          }
+        }
+      ]
+    }
+  ],
+  "days": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "expect": {
+    "events": [
+      {
+        "day": 3,
+        "type": "person_warning",
+        "actor": "dean",
+        "option": "quit"
+      },
+      {
+        "day": 6,
+        "type": "person_acted",
+        "actor": "dean",
+        "option": "quit"
+      }
+    ],
+    "people": {
+      "dean": {
+        "pressure": {
+          "quit": 0
+        },
+        "trust_player": 10,
+        "needs": {
+          "money": 12,
+          "belonging": 3
+        }
+      }
+    },
+    "event_count": 58
+  }
+}

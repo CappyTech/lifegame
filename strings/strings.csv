@@ -1,0 +1,12 @@
+keys,en
+job.cab.name,Cab driver
+job.burger_shop.name,Burger shop
+trait.loyal.name,Loyal
+trait.loyal.description,Sticks with people who have been good to them.
+trait.proud.name,Proud
+trait.proud.description,Takes slights to heart and does not forget them.
+trait.cautious.name,Cautious
+trait.cautious.description,Needs a lot of pressure before taking a risk.
+report.person_warning,{name} seemed distracted all shift.
+report.person_acted.quit,{name} has handed in their notice.
+report.slot_slipped,The {slot} slipped by.

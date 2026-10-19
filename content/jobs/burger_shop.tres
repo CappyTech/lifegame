@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="JobDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/job_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"burger_shop"
+name_key = "job.burger_shop.name"
+work_type = &"ticket"
+teaches = &"business"
+pay_min = 45
+pay_max = 70
+energy_cost = 30
+auto_unlock_skill = 0.7

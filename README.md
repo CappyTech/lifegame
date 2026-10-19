@@ -8,12 +8,12 @@ You're dealt a starting life. You don't choose where you start, only what you do
 
 ## Status
 
-**Stage 1: web prototype.** Proving the design, not shipping. Visuals are deliberately plain.
+**Stage 1: proving the design.** Built in Godot from the start, with deliberately plain visuals.
 
-| Stage | Goal | Tech |
-| --- | --- | --- |
-| 1. Prototype | Prove the day loop, jobs and people system are fun | TypeScript, Svelte, Electron |
-| 2. Production | Full game for Steam, with Steam Deck support | Godot |
+| Stage | Goal |
+| --- | --- |
+| 1. Prove | The day loop, two jobs and the people system are fun |
+| 2. Production | Finished presentation, controller polish, Steam Deck, Steam release |
 
 Stage 1 is complete when a full in-game week is playable, two jobs work by hand and automated, and memories and relationships visibly change outcomes.
 
@@ -29,53 +29,43 @@ The full design lives in [`docs/design.md`](docs/design.md).
 
 ## How it's built
 
-The simulation is separate from the screens:
+Godot 4.7 and GDScript throughout. The simulation is separate from the screens:
 
-- **Simulation core** (`packages/sim`): pure, deterministic TypeScript. Same seed and choices always give the same result.
-- **Content as data**: jobs, traits, life cards and places are YAML files validated by JSON Schema. Dialogue is written in [Ink](https://www.inklestudios.com/ink/). Player-facing text lives in CSV string tables.
-- **UI** (`packages/ui`): Svelte components that read from the simulation and send choices back.
-- **App shell** (`packages/app`): Electron, saves, and Steam integration.
-
-This split is what lets the Stage 2 Godot build reuse all content, dialogue, strings and saves, and check its simulation against the same conformance tests.
+- **Simulation core** (`sim/`): plain scripts with no scene access. Deterministic: the same seed and choices always give the same result.
+- **Content as data** (`content/`): jobs, traits, life cards, places and conversations are Godot Resources, typed by their classes. Player-facing text lives in CSV translation tables.
+- **UI** (`ui/`): one scene per component, styled from a shared tokens file.
+- **Saves**: versioned binary with full history, in the user data folder.
+- **Steam**: GodotSteam.
 
 ## Repository layout
 
 ```
+project.godot
 docs/          design document
-schema/        JSON Schema for content and saves
-content/       YAML game content
-dialogue/      Ink dialogue
-strings/       CSV string tables
-balance/       balancing data (CSV)
+sim/           simulation core
+content/       Resource classes and .tres content
+strings/       CSV translation tables
 tokens/        shared design tokens
-packages/
-  sim/         simulation core
-  ui/          Svelte UI
-  app/         Electron shell, saves, Steam
-tests/
-  conformance/ data-driven simulation tests
-tools/         content validation, baking and type generation
+ui/            component scenes
+tests/         headless unit tests and data-driven conformance cases
+tools/         content validation, Theme generation, balance import
 ```
 
 ## Getting started
 
-Setup scripts are still to be written. The intended workflow:
+Open `project.godot` in Godot 4.7.2. To run the tests headless:
 
 ```bash
-npm install
-npm run content     # validate and bake YAML content to JSON
-npm run dev         # run the prototype in the browser
-npm run app         # run it in Electron
-npm test            # simulation and conformance tests
+godot --headless --path . -s tests/run_tests.gd
 ```
 
 ## Saves
 
-Saves live in your user data folder (`%APPDATA%\CappyTech\<game>` on Windows, `~/.local/share/<game>` on Linux and Steam Deck). Each life is one save, created when its cards are dealt, and keeps its full history.
+Saves live in Godot's user data folder (`%APPDATA%\Godot\app_userdata\<game>` on Windows, `~/.local/share/godot/app_userdata/<game>` on Linux and Steam Deck). Each life is one save, created when its cards are dealt, and keeps its full history.
 
 ## Working on this repo
 
-Development is mostly done with Claude Code. See [`CLAUDE.md`](CLAUDE.md) for the architecture rules, conventions and current priorities. In short: keep the simulation pure and deterministic, keep content in data files, keep player-facing text in string tables, and update `docs/design.md` when a decision changes.
+Development is mostly done with Claude Code. See [`CLAUDE.md`](CLAUDE.md) for the architecture rules, conventions and current priorities. In short: keep the simulation pure and deterministic, keep content in Resources, keep player-facing text in string tables, and update `docs/design.md` when a decision changes.
 
 ## Licence
 

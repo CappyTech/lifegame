@@ -1,0 +1,26 @@
+{
+  "colour": {
+    "background": "#1e1f22",
+    "surface": "#2b2d31",
+    "text": "#e6e6e6",
+    "text_muted": "#9a9da3",
+    "accent": "#d9a441",
+    "positive": "#6fbf73",
+    "negative": "#d9534f"
+  },
+  "spacing": {
+    "xs": 4,
+    "sm": 8,
+    "md": 16,
+    "lg": 24,
+    "xl": 32
+  },
+  "type": {
+    "body": 18,
+    "small": 15,
+    "heading": 26
+  },
+  "radius": {
+    "panel": 6
+  }
+}
