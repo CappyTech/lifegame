@@ -1,23 +1,26 @@
 ; Engine configuration file.
 ; It's best edited using the editor UI and not directly,
 ; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
 
 config_version=5
 
 [application]
 
 config/name="Life game"
-config/features=PackedStringArray("4.6")
-run/main_scene=""
+config/features=PackedStringArray("4.7")
+run/main_scene="res://ui/day_screen.tscn"
 
 [debug]
 
 gdscript/warnings/untyped_declaration=2
-gdscript/warnings/inferred_declaration=0
 gdscript/warnings/unsafe_property_access=1
 gdscript/warnings/unsafe_method_access=1
 gdscript/warnings/unsafe_cast=1
-gdscript/warnings/unsafe_call_argument=1
+gdscript/warnings/unsafe_call_argument=0
 
 [display]
 
@@ -28,6 +31,7 @@ window/stretch/aspect="expand"
 
 [internationalization]
 
+locale/fallback="en"
 locale/translations=PackedStringArray("res://strings/strings.en.translation")
 
 [rendering]

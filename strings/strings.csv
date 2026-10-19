@@ -7,6 +7,28 @@ trait.proud.name,Proud
 trait.proud.description,Takes slights to heart and does not forget them.
 trait.cautious.name,Cautious
 trait.cautious.description,Needs a lot of pressure before taking a risk.
+ui.day,Day {day}
+ui.money,£{money}
+ui.energy,Energy {energy}
+ui.slot.morning,Morning
+ui.slot.afternoon,Afternoon
+ui.slot.evening,Evening
+ui.slot.done,Day over
+ui.plan_title,What will you do?
+ui.plan_done,Nothing left to do today.
+ui.talk_to,Talk to {name}
+ui.rest,Rest at home
+ui.do_nothing,Let it slip
+ui.sleep,Sleep
+ui.report_title,Overnight
+ui.report_first_night,A new life. Nothing has happened yet.
+report.quiet,A quiet day.
+report.slot_slipped.morning,The morning slipped by.
+report.slot_slipped.afternoon,The afternoon slipped by.
+report.slot_slipped.evening,The evening slipped by.
+report.talked,You caught up with {name}.
+report.rested,You had a rest at home.
 report.person_warning,{name} seemed distracted all shift.
+report.person_acted,{name} did something: {option}.
 report.person_acted.quit,{name} has handed in their notice.
-report.slot_slipped,The {slot} slipped by.
+report.person_acted.stops_inviting_you_round,{name} has stopped asking you round.

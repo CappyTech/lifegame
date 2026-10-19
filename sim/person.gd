@@ -6,6 +6,8 @@ extends RefCounted
 const PLAYER_ID: StringName = &"player"
 
 var id: StringName = &""
+## Display name. Generated data, not a string key, so it is shown as-is.
+var name: String = ""
 var role: StringName = &""
 
 ## Need name -> 0..100. Low means unmet.
@@ -88,6 +90,7 @@ func pressure_on(option_id: StringName) -> float:
 func to_dict() -> Dictionary:
 	return {
 		"id": String(id),
+		"name": name,
 		"role": String(role),
 		"needs": needs.duplicate(),
 		"traits": traits.duplicate(),
@@ -102,6 +105,7 @@ func to_dict() -> Dictionary:
 static func from_dict(d: Dictionary) -> Person:
 	var p := Person.new()
 	p.id = StringName(d.get("id", ""))
+	p.name = str(d.get("name", d.get("id", "")))
 	p.role = StringName(d.get("role", ""))
 	p.needs = _keyed(d.get("needs", {}), p.needs)
 	p.traits = _keyed(d.get("traits", {}), {})

@@ -11,7 +11,7 @@ const SLOT_AFTERNOON: int = 1
 const SLOT_EVENING: int = 2
 const SLOTS_PER_DAY: int = 3
 
-var seed: int = 0
+var world_seed: int = 0
 var day: int = 1
 var slot: int = SLOT_MORNING
 var rerolls_left: int = 3
@@ -25,10 +25,10 @@ var events: Array[SimEvent] = []
 var next_event_id: int = 1
 
 
-static func create(world_seed: int) -> WorldState:
+static func create(with_seed: int) -> WorldState:
 	var s := WorldState.new()
-	s.seed = world_seed
-	s.rng.seed = world_seed
+	s.world_seed = with_seed
+	s.rng.seed = with_seed
 	return s
 
 
@@ -70,7 +70,7 @@ func events_on(which_day: int) -> Array[SimEvent]:
 func to_dict() -> Dictionary:
 	return {
 		"version": SAVE_VERSION,
-		"seed": seed,
+		"seed": world_seed,
 		"day": day,
 		"slot": slot,
 		"rerolls_left": rerolls_left,

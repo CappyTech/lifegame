@@ -40,6 +40,22 @@ func test_content_string_keys_exist() -> void:
 					fail("%s: %s '%s' missing from %s" % [path, name, key, STRINGS_CSV])
 
 
+## Every literal "ui.*" or "report.*" key in a script must exist in the
+## string table. Keys built at runtime (report.person_acted.<option>) fall
+## back to their parent key, which this also catches.
+func test_script_string_keys_exist() -> void:
+	var keys: Dictionary = _string_keys()
+	var re := RegEx.create_from_string('"((?:ui|report)\\.[a-z0-9_.]+)"')
+	for path: String in _find_scripts("res://ui") + _find_scripts("res://sim"):
+		var src: String = FileAccess.get_file_as_string(path)
+		for m: RegExMatch in re.search_all(src):
+			var key: String = m.get_string(1)
+			if key.ends_with("."):
+				continue  # prefix for a key built at runtime
+			if not keys.has(key):
+				fail("%s: string key '%s' missing from %s" % [path, key, STRINGS_CSV])
+
+
 func _string_keys() -> Dictionary:
 	var keys: Dictionary = {}
 	var f: FileAccess = FileAccess.open(STRINGS_CSV, FileAccess.READ)
@@ -63,6 +79,20 @@ static func _find_tres(root: String) -> Array[String]:
 		out.append_array(_find_tres(root.path_join(d)))
 	for f: String in dir.get_files():
 		if f.ends_with(".tres"):
+			out.append(root.path_join(f))
+	out.sort()
+	return out
+
+
+static func _find_scripts(root: String) -> Array[String]:
+	var out: Array[String] = []
+	var dir: DirAccess = DirAccess.open(root)
+	if dir == null:
+		return out
+	for d: String in dir.get_directories():
+		out.append_array(_find_scripts(root.path_join(d)))
+	for f: String in dir.get_files():
+		if f.ends_with(".gd"):
 			out.append(root.path_join(f))
 	out.sort()
 	return out
