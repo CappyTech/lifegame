@@ -17,6 +17,13 @@ const SKILL_PER_SHIFT: float = 0.06
 const SKILL_AUTO: float = 0.02
 const AUTO_PAY_FACTOR: float = 0.9
 
+const CONVERSATION_ENGAGE: StringName = &"burger_engage"
+## When Dean is close to quitting (the overnight warning has shown) and you
+## haven't had the conversation yet, the shift opens with him pulling you
+## aside. Timed: silence is an answer.
+const CONVERSATION_WORD: StringName = &"manager_word"
+const WORD_TAGS: Array[StringName] = [&"heard_out", &"promised_more", &"dismissed", &"brushed_off"]
+
 const EVENT_SHIFT_CHOSEN: StringName = &"shift_chosen"
 const EVENT_TICKET_DONE: StringName = &"ticket_done"
 const EVENT_TICKET_MISTAKE: StringName = &"ticket_mistake"
@@ -56,6 +63,7 @@ static func step(state: WorldState, choice: Dictionary) -> void:
 				return
 			a["shift"] = shift
 			a["tickets"] = _tickets(state, int(SHIFTS[shift]["tickets"]))
+			a["conversation"] = String(_engage_conversation(state))
 			state.add_event(EVENT_SHIFT_CHOSEN, [Person.PLAYER_ID], {"job": String(JOB), "shift": shift})
 			a["phase"] = "engage"
 		"engage":
@@ -75,14 +83,32 @@ static func _tickets(state: WorldState, count: int) -> Array:
 	return out
 
 
+## Which conversation opens the shift.
+static func _engage_conversation(state: WorldState) -> StringName:
+	var owner: Person = state.person(OWNER)
+	if owner == null or not bool(owner.warned.get(&"quit", false)):
+		return CONVERSATION_ENGAGE
+	for tag: StringName in WORD_TAGS:
+		if owner.memory_weight(tag) > 0.0:
+			return CONVERSATION_ENGAGE
+	return CONVERSATION_WORD
+
+
 static func _engage(state: WorldState, a: Dictionary, with: String) -> void:
 	a["engaged"] = with
 	var owner: Person = state.person(OWNER)
-	var effects: Dictionary = Activity.choice_effects(state, &"burger_engage", with, ENGAGE_FALLBACK)
+	var conv_id: StringName = StringName(str(a.get("conversation", CONVERSATION_ENGAGE)))
+	var effects: Dictionary = Activity.choice_effects(state, conv_id, with, ENGAGE_FALLBACK)
 	a["reply_key"] = str(effects.get("reply_key", ""))
-	if owner != null and with == "owner":
-		var e: SimEvent = state.add_event(Activity.EVENT_TALKED, [Person.PLAYER_ID, OWNER], {"choice": with})
+	var spoke: bool = with == "owner" or conv_id == CONVERSATION_WORD
+	if owner != null and spoke:
+		var e: SimEvent = state.add_event(Activity.EVENT_TALKED, [Person.PLAYER_ID, OWNER], {"choice": with, "conversation": String(conv_id)})
 		Activity.push(a, "relationships", Activity.apply_choice_effects(state, owner, effects, e.id))
+		if conv_id == CONVERSATION_WORD:
+			# Being heard eases the pressure; being brushed off does not.
+			var relief: float = 0.5 if with == "hear_out" or with == "promise" else 1.0
+			for option_id: StringName in owner.pressure:
+				owner.pressure[option_id] = float(owner.pressure[option_id]) * relief
 	a["phase"] = "work"
 
 

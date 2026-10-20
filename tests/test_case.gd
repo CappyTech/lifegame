@@ -3,6 +3,9 @@ extends RefCounted
 ## Base class for tests. Subclasses live in tests/test_*.gd and define
 ## methods starting with "test_". The runner calls each and collects failures.
 
+## Set by the runner so UI tests can add scenes to the tree.
+static var tree: SceneTree = null
+
 var _failures: Array[String] = []
 
 

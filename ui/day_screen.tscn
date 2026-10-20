@@ -1,0 +1,172 @@
+[gd_scene format=3 uid="uid://ca3od2l0hdrbk"]
+
+[ext_resource type="Script" path="res://ui/day_screen.gd" id="1"]
+[ext_resource type="Theme" uid="uid://cw73ab4rqhl45" path="res://ui/theme.tres" id="2"]
+
+[node name="DayScreen" type="Control" unique_id=1699780097]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2")
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1750479309]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Layout" type="VBoxContainer" parent="." unique_id=1379246206]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Masthead" type="PanelContainer" parent="Layout" unique_id=1014862361]
+layout_mode = 2
+theme_type_variation = &"Masthead"
+
+[node name="Row" type="HBoxContainer" parent="Layout/Masthead" unique_id=737519450]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="DayLabel" type="Label" parent="Layout/Masthead/Row" unique_id=752526947]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"MastheadTitle"
+text = "Day 1"
+
+[node name="SlotLabel" type="Label" parent="Layout/Masthead/Row" unique_id=2033844660]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"MastheadMuted"
+text = "Morning"
+
+[node name="Spacer" type="Control" parent="Layout/Masthead/Row" unique_id=1109598941]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MoneyLabel" type="Label" parent="Layout/Masthead/Row" unique_id=1257944599]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"MastheadTitle"
+text = "£0"
+
+[node name="EnergyLabel" type="Label" parent="Layout/Masthead/Row" unique_id=902565910]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"MastheadMuted"
+text = "Energy 0"
+
+[node name="Body" type="MarginContainer" parent="Layout" unique_id=1184262509]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Columns" type="HBoxContainer" parent="Layout/Body" unique_id=1592839794]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Report" type="PanelContainer" parent="Layout/Body/Columns" unique_id=1518428374]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_type_variation = &"Night"
+
+[node name="ReportBox" type="VBoxContainer" parent="Layout/Body/Columns/Report" unique_id=1781405811]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ReportTitle" type="Label" parent="Layout/Body/Columns/Report/ReportBox" unique_id=855797219]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NightHeading"
+text = "ui.report_title"
+
+[node name="ReportSubtitle" type="Label" parent="Layout/Body/Columns/Report/ReportBox" unique_id=1939798797]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NightMuted"
+text = "ui.report_subtitle"
+
+[node name="ReportRule" type="HSeparator" parent="Layout/Body/Columns/Report/ReportBox" unique_id=700361636]
+layout_mode = 2
+theme_type_variation = &"NightRule"
+
+[node name="ReportLines" type="VBoxContainer" parent="Layout/Body/Columns/Report/ReportBox" unique_id=610352061]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Side" type="VBoxContainer" parent="Layout/Body/Columns" unique_id=1499347105]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 24
+
+[node name="Plan" type="PanelContainer" parent="Layout/Body/Columns/Side" unique_id=1989691954]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"Paper"
+
+[node name="PlanBox" type="VBoxContainer" parent="Layout/Body/Columns/Side/Plan" unique_id=534240936]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PlanTitle" type="Label" parent="Layout/Body/Columns/Side/Plan/PlanBox" unique_id=710683756]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"Heading"
+text = "ui.today"
+
+[node name="PlanRule" type="HSeparator" parent="Layout/Body/Columns/Side/Plan/PlanBox" unique_id=1510232035]
+layout_mode = 2
+theme_type_variation = &"Rule"
+
+[node name="Slots" type="VBoxContainer" parent="Layout/Body/Columns/Side/Plan/PlanBox" unique_id=82651103]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="People" type="PanelContainer" parent="Layout/Body/Columns/Side" unique_id=1380215185]
+layout_mode = 2
+theme_type_variation = &"Paper"
+
+[node name="PeopleBox" type="VBoxContainer" parent="Layout/Body/Columns/Side/People" unique_id=1264833452]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PeopleTitle" type="Label" parent="Layout/Body/Columns/Side/People/PeopleBox" unique_id=942386336]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"Heading"
+text = "ui.people"
+
+[node name="PeopleRule" type="HSeparator" parent="Layout/Body/Columns/Side/People/PeopleBox" unique_id=1129018916]
+layout_mode = 2
+theme_type_variation = &"Rule"
+
+[node name="PeopleLines" type="VBoxContainer" parent="Layout/Body/Columns/Side/People/PeopleBox" unique_id=980349378]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SleepButton" type="Button" parent="Layout/Body/Columns/Side" unique_id=1854451837]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"Primary"
+text = "ui.sleep"

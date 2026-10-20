@@ -227,6 +227,7 @@ Real conversations don't wait, so moments that matter run on a timer. Everyday c
 
 - Promotions, confrontations, a police officer asking questions, someone asking for your help or your answer.
 - Not in routine chat, shop transactions or small talk. Overused timers make the game stressful and push players away.
+- In the build: once Dean's overnight warning has shown ("seemed distracted all shift"), the next burger shift opens with him pulling you aside on an eight-second timer. Hearing him out or promising more halves his pressure to quit and he remembers it; dismissing him or saying nothing is remembered too, and weighs the other way. It happens once.
 
 **Silence is an answer**
 

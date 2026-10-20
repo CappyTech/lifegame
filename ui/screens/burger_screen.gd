@@ -77,7 +77,8 @@ func _show_engage() -> void:
 	var dean: Person = state.person(Burger.OWNER)
 	if dean != null:
 		speaker.show_speaker(SpeakerCard.data_for_person(dean))
-	var conv: Conversation = Activity.conversation(state, &"burger_engage")
+	var conv_id: StringName = StringName(str(state.activity.get("conversation", "burger_engage")))
+	var conv: Conversation = Activity.conversation(state, conv_id)
 	var choices: Array[Dictionary] = []
 	if conv != null:
 		for c: Dictionary in conv.choices:
@@ -88,7 +89,8 @@ func _show_engage() -> void:
 	conversation.show_conversation({
 		"opener": UiText.keyed(conv.opener_key if conv != null else "conv.burger_engage.opener"),
 		"choices": UiText.choices(choices),
-		"timer_seconds": 0.0,
+		"timer_seconds": conv.timer_seconds if conv != null else 0.0,
+		"silence_text": UiText.keyed(conv.silence_key) if conv != null and conv.silence_key != "" else "",
 	})
 
 

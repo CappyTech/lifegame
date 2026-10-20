@@ -30,7 +30,7 @@ static func dean() -> Person:
 			"needs": {"money": 0.35, "belonging": 0.4},
 			"traits": {"loyal": -25},
 			"trust": {"player": -0.15},
-			"memories": {"talked": -2, "heard_out": -6, "dismissed": 8},
+			"memories": {"talked": -2, "heard_out": -6, "promised_more": -3, "dismissed": 8, "brushed_off": 6},
 		}],
 	})
 

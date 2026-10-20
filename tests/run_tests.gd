@@ -11,6 +11,12 @@ const TESTS_DIR: String = "res://tests"
 
 
 func _init() -> void:
+	TestCase.tree = self
+	# Run once the tree is live, so scenes added by UI tests get _ready().
+	process_frame.connect(_run, CONNECT_ONE_SHOT)
+
+
+func _run() -> void:
 	var files: Array[String] = _find_test_files()
 	var passed: int = 0
 	var failed: int = 0

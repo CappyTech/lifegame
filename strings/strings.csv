@@ -1,5 +1,5 @@
 keys,en
-job.cab.name,Cab driver
+job.cab.name,Taxi driver
 job.burger_shop.name,Burger shop
 trait.loyal.name,Loyal
 trait.loyal.description,Sticks with people who have been good to them.
@@ -14,7 +14,7 @@ role.council_clerk,Works at the council
 role.cab_controller,Runs the cab office radio
 role.passenger,Passenger
 role.regular,Regular
-place.cab_office.name,Cab office
+place.cab_office.name,Taxi office
 place.burger_shop.name,Burger shop
 place.high_street.name,High Street
 place.council.name,Council offices
@@ -77,9 +77,9 @@ conv.ride.chat.reply,"Not bad. Be glad to get home, mind."
 conv.ride.ask,"How's things with you, then?"
 conv.ride.ask.reply,"Funny you should ask."
 conv.ride.radio,Put the radio on and leave them to it.
-conv.burger_engage.opener,"Dean looks up from the till. The first tickets are already up."
+conv.burger_engage.opener,"Dean looks up from the till. The first orders are already up."
 conv.burger_engage.owner,"How do you want me today, Dean?"
-conv.burger_engage.owner.reply,"Fryer first, then the pass. And keep the pickles off the kids' ones, they only moan."
+conv.burger_engage.owner.reply,"Fryer first, then the counter. And keep the gherkins off the kids' ones, they only moan."
 conv.burger_engage.customers,Have a word with the regulars at the counter.
 conv.burger_engage.customers.reply,"Same faces as always. One of them asks after your mum."
 conv.burger_engage.head_down,Keep your head down and get on with it.
@@ -123,8 +123,8 @@ ui.today,Today
 ui.later,Later
 ui.people,People
 ui.talk_to,Talk to {name}
-ui.cab_shift,Cab shift
-ui.cab_shift_auto,Cab shift (let it run)
+ui.cab_shift,Taxi shift
+ui.cab_shift_auto,Taxi shift (let it run)
 ui.burger_shift,Burger shop shift
 ui.burger_shift_auto,Burger shop shift (let it run)
 ui.rest,Rest at home
@@ -141,8 +141,8 @@ ui.hand_subtitle,"You don't choose where you start. Only what you do with it."
 ui.take_life,Take this life
 ui.deal_again,Deal again ({n} left)
 ui.no_rerolls,This is your hand now.
-ui.choose_fare,Dispatch
-ui.choose_fare_hint,Three jobs on the radio. Take one.
+ui.choose_fare,On the radio
+ui.choose_fare_hint,Three jobs come over the radio. Take one.
 ui.fare_card,{name} to {destination}
 ui.fare_price,£{fare}
 ui.fare_trait.regular,A regular. Builds a relationship.
@@ -161,26 +161,26 @@ ui.route.detour,Round the back
 ui.route.detour.hint,Slower. You might see something.
 ui.choose_shift,Which shift?
 ui.shift.lunch,Lunch rush
-ui.shift.lunch.hint,"Pays more. Six tickets, no let-up."
+ui.shift.lunch.hint,"Pays more. Six orders, no let-up."
 ui.shift.evening,Quiet evening
-ui.shift.evening.hint,"Pays less. Four tickets, and time with Dean."
+ui.shift.evening.hint,"Pays less. Four orders, and time with Dean."
 ui.the_work,The work
-ui.ticket,Ticket {n} of {total}
-ui.mistakes,Mistakes: {n}
+ui.ticket,Order {n} of {total}
+ui.mistakes,Wrong: {n}
 ui.menu.burger,Burger
 ui.menu.cheeseburger,Cheeseburger
-ui.menu.fries,Fries
-ui.menu.drink,Drink
-ui.menu.shake,Shake
+ui.menu.fries,Chips
+ui.menu.drink,Can of pop
+ui.menu.shake,Milkshake
 ui.shop_floor,Shop floor
 ui.station.grill,Grill
 ui.station.fryer,Fryer
 ui.station.drinks,Drinks
-ui.station.pass,The pass
+ui.station.pass,The counter
 ui.map_title,Town
 ui.context.title,Right now
 ui.context.talk,Catching up
-ui.context.cab_shift,On shift for the cab office
+ui.context.cab_shift,On shift for the taxi office
 ui.context.burger_shift,On shift at the burger shop
 ui.context.place,At {place}
 ui.context.home,At home
@@ -203,15 +203,15 @@ outcome.fare,{name} paid £{fare} and tipped £{tip}.
 outcome.fare_dodged,{name} legged it without paying.
 outcome.roadworks,Roadworks on the ring road. Slower than it should have been.
 outcome.cab_shift,"{fares} fares. £{earned} in fares, £{tips} in tips."
-outcome.cab_shift_auto,{fares} fares on autopilot. £{earned}. You heard nothing worth hearing.
+outcome.cab_shift_auto,{fares} fares with your mind elsewhere. £{earned}. You heard nothing worth hearing.
 outcome.burger_shift,"£{wage} wages, £{tips} in the tip jar. {mistakes} orders wrong."
-outcome.burger_shift_auto,A shift on autopilot. £{earned}. {mistakes} orders wrong.
+outcome.burger_shift_auto,A shift with your mind elsewhere. £{earned}. {mistakes} orders wrong.
 outcome.owner_unimpressed,{name} noticed the mistakes.
 outcome.rel.up,Went up in {name}'s eyes.
 outcome.rel.down,Went down in {name}'s eyes.
 outcome.rel.same,Much as before with {name}.
 outcome.automation.cab,You could drive these routes in your sleep now.
-outcome.automation.burger_shop,You could run that pass with your eyes shut now.
+outcome.automation.burger_shop,You could run that counter with your eyes shut now.
 rumour.council_sale,The council is selling a unit on the parade. Cheap.
 rumour.retail_unit,A unit's coming free at the retail park.
 seen.chippy,There was a queue out the door at the chippy.
@@ -227,10 +227,10 @@ report.slot_slipped.afternoon,The afternoon slipped by.
 report.slot_slipped.evening,The evening slipped by.
 report.talked,You caught up with {name}.
 report.rested,You had a rest at home.
-report.shift.cab,A cab shift. £{pay} in your pocket.
-report.shift.cab_auto,A cab shift on autopilot. £{pay}.
+report.shift.cab,A taxi shift. £{pay} in your pocket.
+report.shift.cab_auto,A taxi shift with your mind elsewhere. £{pay}.
 report.shift.burger_shop,A shift at the burger shop. £{pay}.
-report.shift.burger_shop_auto,A burger shop shift on autopilot. £{pay}.
+report.shift.burger_shop_auto,A burger shop shift with your mind elsewhere. £{pay}.
 report.fare_dodged,{name} ran off without paying. Word got round the rank.
 report.rumour.council_sale,{name} let slip the council is selling a unit on the parade.
 report.rumour.retail_unit,{name} mentioned a unit coming free at the retail park.
@@ -239,9 +239,9 @@ report.noticed.retail_park,You noticed the shutters at the retail park.
 report.noticed.crown,You noticed the Crown's car park was full.
 report.noticed.high_street,You noticed another shop gone on the High Street.
 report.automation_unlocked.cab,You could drive these routes in your sleep now.
-report.automation_unlocked.burger_shop,You could run that pass with your eyes shut now.
+report.automation_unlocked.burger_shop,You could run that counter with your eyes shut now.
 report.walked_out.talk,You left mid-conversation.
-report.walked_out.cab_shift,You walked out on a cab shift. The office noticed.
+report.walked_out.cab_shift,You walked out on a taxi shift. The office noticed.
 report.walked_out.burger_shift,You walked out on a shift at the burger shop. Dean noticed.
 report.person_warning,{name} seemed distracted all shift.
 report.person_acted,{name} did something: {option}.

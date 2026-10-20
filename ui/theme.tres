@@ -1,4 +1,4 @@
-[gd_resource type="Theme" format=3]
+[gd_resource type="Theme" format=3 uid="uid://cw73ab4rqhl45"]
 
 [sub_resource type="SystemFont" id="SystemFont_denks"]
 font_names = PackedStringArray("Segoe UI", "Noto Sans", "DejaVu Sans", "Liberation Sans", "sans-serif")

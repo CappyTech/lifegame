@@ -56,6 +56,34 @@ func test_auto_shift_after_unlock() -> void:
 	assert_eq(s.last_outcome["lines"][0]["key"], "outcome.burger_shift_auto", "auto outcome")
 
 
+func test_warned_owner_pulls_you_aside_once() -> void:
+	var s: WorldState = TownBuilder.debug_town(25, Catalogue.load_all())
+	var dean: Person = s.person(&"dean")
+	dean.warned[&"quit"] = true
+	dean.pressure[&"quit"] = 30.0
+	Sim.apply(s, {"type": "start", "activity": "burger_shift"})
+	Sim.apply(s, {"type": "step", "shift": "evening"})
+	assert_eq(s.activity["conversation"], "manager_word", "the word, not the usual opener")
+	Sim.apply(s, {"type": "step", "choice": "hear_out"})
+	assert_eq(dean.memory_weight(&"heard_out"), 1.0, "Dean remembers being heard")
+	assert_near(dean.pressure_on(&"quit"), 15.0, 0.001, "pressure halved")
+	Sim.sleep(s)
+	Sim.apply(s, {"type": "start", "activity": "burger_shift"})
+	Sim.apply(s, {"type": "step", "shift": "evening"})
+	assert_eq(s.activity["conversation"], "burger_engage", "only once")
+
+
+func test_silence_during_the_word_is_remembered() -> void:
+	var s: WorldState = TownBuilder.debug_town(26, Catalogue.load_all())
+	var dean: Person = s.person(&"dean")
+	dean.warned[&"quit"] = true
+	Sim.apply(s, {"type": "start", "activity": "burger_shift"})
+	Sim.apply(s, {"type": "step", "shift": "lunch"})
+	Sim.apply(s, {"type": "step", "choice": "silence"})
+	assert_eq(dean.memory_weight(&"brushed_off"), 1.0, "silence writes brushed_off")
+	assert_eq(s.activity["phase"], "work", "shift carries on")
+
+
 static func _count(s: WorldState, type: StringName) -> int:
 	var n: int = 0
 	for e: SimEvent in s.events:
