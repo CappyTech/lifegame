@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/conversation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"catch_up"
+opener_key = "conv.catch_up.opener"
+timer_seconds = 0.0
+choices = Array[Dictionary]([{"id": "chat", "text_key": "conv.catch_up.chat", "reply_key": "conv.catch_up.chat.reply", "trust": 2.0, "belonging": 8.0, "memory_tag": "talked"}, {"id": "ask", "text_key": "conv.catch_up.ask", "reply_key": "conv.catch_up.ask.reply", "trust": 3.0, "belonging": 6.0, "memory_tag": "asked_after_them", "emotional": true}, {"id": "quiet", "text_key": "conv.catch_up.quiet", "reply_key": "conv.catch_up.quiet.reply", "belonging": 3.0, "memory_tag": "talked"}])

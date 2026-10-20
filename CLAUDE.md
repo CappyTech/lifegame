@@ -72,7 +72,11 @@ content/
   jobs/, cards/, ...      .tres instances
 strings/                  CSV translation tables (key, en, ...)
 tokens/design-tokens.json colours, spacing, type sizes
-ui/                       component scenes (Stage 1: placeholders)
+ui/
+  game.tscn               root: masthead + screen host, owns WorldState and Catalogue
+  screens/                hand, day, talk, cab, burger (one per activity; each has refresh(state))
+  components/             Map, SpeakerCard, ContextPanel, Conversation, RouteWork, TicketWork, Outcome
+  ui_text.gd              the one place sim entries become text
 tests/
   run_tests.gd            headless runner
   test_*.gd               unit tests
@@ -118,9 +122,12 @@ People are independent agents driven by needs (utility AI). Numbers below are fi
 
 ## UI rules
 
-- **Shared design tokens.** Scenes read from the Theme built from `/tokens/design-tokens.json`. Don't hard-code colours or sizes in scenes.
+- **Shared design tokens.** Scenes read from the Theme built from `/tokens/design-tokens.json` by `tools/build_theme.gd`. `ui/theme.tres` is generated: never hand-edit it, and rebuild it after changing tokens. Don't hard-code colours, fonts or sizes in scenes; pick a type variation instead (`Display`, `Heading`, `Caption`, `Muted`, `NightHeading`, `NightBody`, `NightMuted`, `MastheadTitle`, `MastheadMuted` for Labels; `Paper`, `Night`, `Masthead` for PanelContainers; `Primary`, `Choice` for Buttons; `Rule`, `NightRule` for HSeparators). Add a variation to the generator rather than overriding in a scene.
+- **Visual direction** is in `docs/design.md` under UI components: paper by day, slate by night, serif for what the town says, sans for what you operate, words not numbers for relationships.
 - **Stable component names and inputs.** Core component scenes: `Map`, `SpeakerCard`, `ContextPanel`, `Conversation`, `Work` (per job: `RouteWork`, `TicketWork`), `Outcome`. Keep their inputs small and data-shaped, e.g. `SpeakerCard {name, role, relationship, traits, memories}`.
 - **Controller-navigable from the start.** Steam Deck is 1280×800; check layouts there.
+- **Screens never call the sim.** They call `game.apply(choice)`, `game.sleep()` or `game.outcome_done()` on the root and redraw from `refresh(state)`. Activities live in `state.activity` with a `kind` and `phase`; a screen is a `match` over the phase.
+- **Components take data, not state.** `SpeakerCard.show_speaker({name, role_key, relationship_key, trait_keys, memory_keys})`, `ContextPanel.show_context({...})`, `ConversationView.show_conversation({opener, choices, timer_seconds, silence_text})`, `TownMap.show_map({mode, places|stations, position, destination, marked})`, `RouteWork.show_routes`, `TicketWork.show_ticket`, `OutcomeView.show_outcome`. Builders like `SpeakerCard.data_for_person(p)` do the mapping.
 
 ## Design guardrails
 

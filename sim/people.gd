@@ -78,3 +78,17 @@ static func fade_memories(person: Person) -> void:
 		if float(m["weight"]) >= MEMORY_FORGOTTEN_BELOW:
 			kept.append(m)
 	person.memories = kept
+
+
+## Words, not numbers: the band a trust value falls into, for the UI and
+## the report. Keys exist in strings as rel.<band>.
+static func trust_band(trust: float) -> StringName:
+	if trust < -30.0:
+		return &"cold"
+	if trust < 0.0:
+		return &"wary"
+	if trust < 20.0:
+		return &"civil"
+	if trust < 50.0:
+		return &"warm"
+	return &"close"

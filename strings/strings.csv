@@ -7,28 +7,245 @@ trait.proud.name,Proud
 trait.proud.description,Takes slights to heart and does not forget them.
 trait.cautious.name,Cautious
 trait.cautious.description,Needs a lot of pressure before taking a risk.
+role.burger_shop_manager,Runs the burger shop
+role.family,Family
+role.chippy_owner,Has the chippy
+role.council_clerk,Works at the council
+role.cab_controller,Runs the cab office radio
+role.passenger,Passenger
+role.regular,Regular
+place.cab_office.name,Cab office
+place.burger_shop.name,Burger shop
+place.high_street.name,High Street
+place.council.name,Council offices
+place.crown.name,The Crown
+place.estate.name,The estate
+place.chippy.name,The chippy
+place.hospital.name,The hospital
+place.station.name,The station
+place.retail_park.name,Retail park
+card.single_mum_estate.title,Single mum on the estate
+card.single_mum_estate.family,"One kid, seven, at the primary round the corner."
+card.single_mum_estate.home,Two-bed council flat on the estate.
+card.single_mum_estate.key,Your uncle Ray has the chippy on the parade.
+card.single_mum_estate.money,£60 to your name.
+card.single_mum_estate.hidden.uncle_retiring,Ray is about ready to pack it in.
+card.single_mum_estate.hidden.mum_council_friend,Your mum's friend works at the council.
+card.comfortable_expectations.title,Comfortable and expected to do well
+card.comfortable_expectations.family,Parents still together. Dad sells conservatories.
+card.comfortable_expectations.home,Your old room at your parents' in the nice bit.
+card.comfortable_expectations.key,Your mum's friend Carol is a clerk at the council.
+card.comfortable_expectations.money,£400 from your gran.
+card.comfortable_expectations.hidden.dad_watching,Your dad is keeping score.
+card.comfortable_expectations.hidden.council_sale,The council is quietly selling a unit on the parade.
+card.back_in_town.title,Back in town after a few years away
+card.back_in_town.family,Nobody close left here. A sister in Leeds.
+card.back_in_town.home,Room above the Crown for now.
+card.back_in_town.key,Your old mate Stevo runs the radio at the cab office.
+card.back_in_town.money,£150 and a car that starts most days.
+card.back_in_town.hidden.mate_leaving,Stevo has been thinking about leaving town.
+card.fresh_out.title,Fresh out of school
+card.fresh_out.family,Living with your nan. Mum's not around much.
+card.fresh_out.home,Nan's bungalow on the estate.
+card.fresh_out.key,Your Auntie Pat looks in most days.
+card.fresh_out.money,£40 in a tin.
+card.fresh_out.hidden.nan_knows_everyone,Your nan knows everyone on the estate.
+conv.catch_up.opener,"Alright. Didn't expect to see you today."
+conv.catch_up.chat,Just thought I'd see how you're getting on.
+conv.catch_up.chat.reply,"Oh, you know. Same as ever. Good of you to come, though."
+conv.catch_up.ask,How are you doing? Honestly.
+conv.catch_up.ask.reply,"Honestly? Been better. But it helps, you asking."
+conv.catch_up.quiet,Sit with them a while without saying much.
+conv.catch_up.quiet.reply,They don't seem to mind the quiet.
+conv.dean_catch_up.opener,"Not on shift, are you? Go on then, what is it?"
+conv.dean_catch_up.chat,"Nothing. Just passing. How's the shop?"
+conv.dean_catch_up.chat.reply,"Ticking over. Lunch was murder. Cheers for asking, I suppose."
+conv.dean_catch_up.ask,"You look done in, Dean. What's going on?"
+conv.dean_catch_up.ask.reply,"Rent's gone up, lad's gone off sick, and head office want the numbers by Friday. That's what."
+conv.dean_catch_up.push,"Any chance of more hours? I could do with the money."
+conv.dean_catch_up.push.reply,"Everyone could do with the money. We'll see."
+conv.pat_catch_up.opener,"Come in, come in. Kettle's on. You look thin."
+conv.pat_catch_up.chat,"I'm fine, Pat. How've you been?"
+conv.pat_catch_up.chat.reply,"Oh, mustn't grumble. Our Dawn's been round. Sit down."
+conv.pat_catch_up.help,"Give me that hoover. You sit down for once."
+conv.pat_catch_up.help.reply,"Well. I won't say no. You're a good 'un underneath it all."
+conv.pat_catch_up.quiet,Drink your tea and let her talk.
+conv.pat_catch_up.quiet.reply,"She talks for the both of you, and seems happier for it."
+conv.ride.opener,"They settle in the back. The meter ticks over."
+conv.ride.chat,"Busy day?"
+conv.ride.chat.reply,"Not bad. Be glad to get home, mind."
+conv.ride.ask,"How's things with you, then?"
+conv.ride.ask.reply,"Funny you should ask."
+conv.ride.radio,Put the radio on and leave them to it.
+conv.burger_engage.opener,"Dean looks up from the till. The first tickets are already up."
+conv.burger_engage.owner,"How do you want me today, Dean?"
+conv.burger_engage.owner.reply,"Fryer first, then the pass. And keep the pickles off the kids' ones, they only moan."
+conv.burger_engage.customers,Have a word with the regulars at the counter.
+conv.burger_engage.customers.reply,"Same faces as always. One of them asks after your mum."
+conv.burger_engage.head_down,Keep your head down and get on with it.
+conv.manager_word.opener,"Dean pulls you aside by the freezer. ""Can I have a word? I'm thinking of jacking it in."""
+conv.manager_word.silence,You didn't say anything. He took that as an answer.
+conv.manager_word.hear_out,"Go on. I'm listening."
+conv.manager_word.hear_out.reply,"He talks for ten minutes. Nobody's asked him in months."
+conv.manager_word.promise,"Don't do anything yet. I'll pick up more shifts."
+conv.manager_word.promise.reply,"Aye. Well. We'll see if you do."
+conv.manager_word.dismiss,"You say that every month, Dean."
+conv.manager_word.dismiss.reply,"He goes quiet and doesn't look at you for the rest of the shift."
+mem.talked,Talked to you
+mem.asked_after_them,You asked after them
+mem.pushed,You pushed for more
+mem.helped_out,You helped out
+mem.chatted,You chatted
+mem.asked,You asked about them
+mem.heard_out,You heard them out
+mem.promised_more,You promised more
+mem.dismissed,You dismissed them
+mem.brushed_off,You brushed them off
+rel.cold,Cold with you
+rel.wary,Wary of you
+rel.civil,Civil
+rel.warm,Warm to you
+rel.close,Close to you
+mood.fine,Seems alright
+mood.low,Seems low
+mood.tired,Looks worn out
+mood.skint,Worried about money
 ui.day,Day {day}
 ui.money,£{money}
 ui.energy,Energy {energy}
+ui.known,Known by {n}
 ui.slot.morning,Morning
 ui.slot.afternoon,Afternoon
 ui.slot.evening,Evening
 ui.slot.done,Day over
-ui.plan_title,What will you do?
-ui.plan_done,Nothing left to do today.
+ui.slot_nothing,Nothing
+ui.today,Today
+ui.later,Later
+ui.people,People
 ui.talk_to,Talk to {name}
+ui.cab_shift,Cab shift
+ui.cab_shift_auto,Cab shift (let it run)
+ui.burger_shift,Burger shop shift
+ui.burger_shift_auto,Burger shop shift (let it run)
 ui.rest,Rest at home
 ui.do_nothing,Let it slip
 ui.sleep,Sleep
+ui.continue,Carry on
+ui.next_fare,Next fare
 ui.report_title,Overnight
+ui.report_subtitle,While you slept
 ui.report_first_night,A new life. Nothing has happened yet.
+ui.hand_title,Your hand
+ui.hand_masthead,A new life
+ui.hand_subtitle,"You don't choose where you start. Only what you do with it."
+ui.take_life,Take this life
+ui.deal_again,Deal again ({n} left)
+ui.no_rerolls,This is your hand now.
+ui.choose_fare,Dispatch
+ui.choose_fare_hint,Three jobs on the radio. Take one.
+ui.fare_card,{name} to {destination}
+ui.fare_price,£{fare}
+ui.fare_trait.regular,A regular. Builds a relationship.
+ui.fare_trait.chatty,Likes a chat.
+ui.fare_trait.quiet,Keeps themselves to themselves.
+ui.fare_trait.late_lads,Lads on a night out. Pays well if they pay.
+ui.fare_trait.long_trip,Long trip. Pays best.
+ui.the_ride,The ride
+ui.the_drive,The drive
+ui.the_drive_hint,Which way?
+ui.drop_off,Drop-off
+ui.shift_over,End of shift
+ui.route.main,Main road
+ui.route.main.hint,Quick. Tips better.
+ui.route.detour,Round the back
+ui.route.detour.hint,Slower. You might see something.
+ui.choose_shift,Which shift?
+ui.shift.lunch,Lunch rush
+ui.shift.lunch.hint,"Pays more. Six tickets, no let-up."
+ui.shift.evening,Quiet evening
+ui.shift.evening.hint,"Pays less. Four tickets, and time with Dean."
+ui.the_work,The work
+ui.ticket,Ticket {n} of {total}
+ui.mistakes,Mistakes: {n}
+ui.menu.burger,Burger
+ui.menu.cheeseburger,Cheeseburger
+ui.menu.fries,Fries
+ui.menu.drink,Drink
+ui.menu.shake,Shake
+ui.shop_floor,Shop floor
+ui.station.grill,Grill
+ui.station.fryer,Fryer
+ui.station.drinks,Drinks
+ui.station.pass,The pass
+ui.map_title,Town
+ui.context.title,Right now
+ui.context.talk,Catching up
+ui.context.cab_shift,On shift for the cab office
+ui.context.burger_shift,On shift at the burger shop
+ui.context.place,At {place}
+ui.context.home,At home
+ui.context.pressure.known,They've had rides with you before.
+ui.context.pressure.rumour,They might know something.
+ui.context.pressure.risk,This one could go wrong.
+ui.speaker.traits,Traits
+ui.speaker.memories,Remembers
+ui.speaker.none,Nothing yet
+ui.stay_quiet,Stay quiet
+ui.silence_hint,Letting it run out is an answer too.
+ui.outcome_title,What changed
+ui.outcome.money_up,+£{money}
+ui.outcome.money_down,−£{money}
+ui.outcome.money_same,No money changed hands
+ui.outcome.energy,Energy {delta}
+ui.outcome.relationships,People
+ui.outcome.learned,Learned
+outcome.fare,{name} paid £{fare} and tipped £{tip}.
+outcome.fare_dodged,{name} legged it without paying.
+outcome.roadworks,Roadworks on the ring road. Slower than it should have been.
+outcome.cab_shift,"{fares} fares. £{earned} in fares, £{tips} in tips."
+outcome.cab_shift_auto,{fares} fares on autopilot. £{earned}. You heard nothing worth hearing.
+outcome.burger_shift,"£{wage} wages, £{tips} in the tip jar. {mistakes} orders wrong."
+outcome.burger_shift_auto,A shift on autopilot. £{earned}. {mistakes} orders wrong.
+outcome.owner_unimpressed,{name} noticed the mistakes.
+outcome.rel.up,Went up in {name}'s eyes.
+outcome.rel.down,Went down in {name}'s eyes.
+outcome.rel.same,Much as before with {name}.
+outcome.automation.cab,You could drive these routes in your sleep now.
+outcome.automation.burger_shop,You could run that pass with your eyes shut now.
+rumour.council_sale,The council is selling a unit on the parade. Cheap.
+rumour.retail_unit,A unit's coming free at the retail park.
+seen.chippy,There was a queue out the door at the chippy.
+seen.retail_park,Half the retail park has its shutters down.
+seen.crown,The Crown's car park was full on a weeknight.
+seen.high_street,Another shop on the High Street has gone.
+learned.burger.lunch,What goes wrong in a rush.
+learned.burger.evening,How Dean cashes up.
 report.quiet,A quiet day.
+report.life_started,You started again from what you were dealt.
 report.slot_slipped.morning,The morning slipped by.
 report.slot_slipped.afternoon,The afternoon slipped by.
 report.slot_slipped.evening,The evening slipped by.
 report.talked,You caught up with {name}.
 report.rested,You had a rest at home.
+report.shift.cab,A cab shift. £{pay} in your pocket.
+report.shift.cab_auto,A cab shift on autopilot. £{pay}.
+report.shift.burger_shop,A shift at the burger shop. £{pay}.
+report.shift.burger_shop_auto,A burger shop shift on autopilot. £{pay}.
+report.fare_dodged,{name} ran off without paying. Word got round the rank.
+report.rumour.council_sale,{name} let slip the council is selling a unit on the parade.
+report.rumour.retail_unit,{name} mentioned a unit coming free at the retail park.
+report.noticed.chippy,You noticed the queue at the chippy.
+report.noticed.retail_park,You noticed the shutters at the retail park.
+report.noticed.crown,You noticed the Crown's car park was full.
+report.noticed.high_street,You noticed another shop gone on the High Street.
+report.automation_unlocked.cab,You could drive these routes in your sleep now.
+report.automation_unlocked.burger_shop,You could run that pass with your eyes shut now.
+report.walked_out.talk,You left mid-conversation.
+report.walked_out.cab_shift,You walked out on a cab shift. The office noticed.
+report.walked_out.burger_shift,You walked out on a shift at the burger shop. Dean noticed.
 report.person_warning,{name} seemed distracted all shift.
 report.person_acted,{name} did something: {option}.
 report.person_acted.quit,{name} has handed in their notice.
 report.person_acted.stops_inviting_you_round,{name} has stopped asking you round.
+report.person_acted.sells_up,{name} has put the chippy up for sale.
+report.person_acted.leaves_town,{name} has left town.

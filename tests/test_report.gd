@@ -3,7 +3,8 @@ extends TestCase
 
 func test_first_night_report_lists_slipped_slots_and_talk() -> void:
 	var s: WorldState = TownBuilder.debug_town(5)
-	Sim.apply(s, {"type": "talk", "person": "dean"})
+	Sim.apply(s, {"type": "start", "activity": "talk", "person": "dean"})
+	Sim.apply(s, {"type": "step", "choice": "chat"})
 	Sim.sleep(s)
 	var keys: Array[String] = []
 	for entry: Dictionary in Report.build(s, 1):
@@ -12,6 +13,7 @@ func test_first_night_report_lists_slipped_slots_and_talk() -> void:
 	var first: Dictionary = Report.build(s, 1)[0]
 	assert_eq(first["params"]["name"], "Dean", "uses display name")
 	assert_true(int(first["event_id"]) > 0, "entry points at its event")
+	assert_eq(first["slot"], 0, "talk happened in the morning slot")
 
 
 func test_empty_day_is_quiet() -> void:

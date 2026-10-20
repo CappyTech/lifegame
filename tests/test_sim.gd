@@ -34,6 +34,7 @@ func test_different_seed_different_noise() -> void:
 
 func test_unused_slots_slip_and_are_recorded() -> void:
 	var s: WorldState = WorldState.create(1)
+	s.phase = WorldState.PHASE_LIVING
 	var events: Array[SimEvent] = Sim.sleep(s)
 	var slipped: int = 0
 	for e: SimEvent in events:
@@ -67,12 +68,49 @@ func test_talking_changes_the_outcome() -> void:
 	assert_true(tended.person(&"dean").memories.size() > 0, "memories of being talked to")
 
 
+func test_talk_is_a_two_step_activity() -> void:
+	var s: WorldState = WorldState.create(2)
+	s.phase = WorldState.PHASE_LIVING
+	s.add_person(_manager())
+	Sim.apply(s, {"type": "start", "activity": "talk", "person": "dean"})
+	assert_eq(s.activity.get("kind", ""), "talk", "talk in progress")
+	assert_eq(s.slot, 0, "slot not used until finished")
+	Sim.apply(s, {"type": "start", "activity": "talk", "person": "dean"})
+	assert_eq(s.activity.get("kind", ""), "talk", "a second start is ignored mid-activity")
+	Sim.apply(s, {"type": "step", "choice": "ask"})
+	assert_true(s.activity.is_empty(), "talk finished")
+	assert_eq(s.slot, 1, "slot used")
+	assert_eq(s.last_outcome["relationships"][0]["key"], "outcome.rel.up", "trust went up")
+	assert_near(s.person(&"dean").trust_toward(Person.PLAYER_ID), 13.0, 0.001, "ask gives +3 trust")
+
+
+func test_sleeping_mid_activity_abandons_it() -> void:
+	var s: WorldState = WorldState.create(2)
+	s.phase = WorldState.PHASE_LIVING
+	s.add_person(_manager())
+	Sim.apply(s, {"type": "start", "activity": "talk", "person": "dean"})
+	Sim.sleep(s)
+	assert_true(s.activity.is_empty(), "activity cleared")
+	assert_eq(_count(s, Activity.EVENT_ACTIVITY_ABANDONED), 1, "abandonment recorded")
+	assert_eq(_count(s, Sim.EVENT_SLOT_SLIPPED), 2, "the other two slots slipped")
+
+
+func test_sleep_restores_energy() -> void:
+	var s: WorldState = WorldState.create(1)
+	s.phase = WorldState.PHASE_LIVING
+	s.player_energy = 20
+	Sim.sleep(s)
+	assert_eq(s.player_energy, 60, "sleep adds 40")
+
+
 func _run(seed: int, days: int, talk: bool) -> WorldState:
 	var s: WorldState = WorldState.create(seed)
+	s.phase = WorldState.PHASE_LIVING
 	s.add_person(_manager())
 	for _d: int in days:
 		if talk:
-			Sim.apply(s, {"type": "talk", "person": "dean"})
+			Sim.apply(s, {"type": "start", "activity": "talk", "person": "dean"})
+			Sim.apply(s, {"type": "step", "choice": "chat"})
 		Sim.sleep(s)
 	return s
 

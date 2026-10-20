@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LifeCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/life_card.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"fresh_out"
+title_key = "card.fresh_out.title"
+surface_keys = Array[String](["card.fresh_out.family", "card.fresh_out.home", "card.fresh_out.key", "card.fresh_out.money"])
+hidden_keys = Array[String](["card.fresh_out.hidden.nan_knows_everyone"])
+start_money = 40
+start_energy = 95
+anchor = &"nan_estate"

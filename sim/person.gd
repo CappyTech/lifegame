@@ -9,6 +9,8 @@ var id: StringName = &""
 ## Display name. Generated data, not a string key, so it is shown as-is.
 var name: String = ""
 var role: StringName = &""
+## Conversation resource used when the player catches up with them.
+var conversation: StringName = &"catch_up"
 
 ## Need name -> 0..100. Low means unmet.
 var needs: Dictionary = {
@@ -92,6 +94,7 @@ func to_dict() -> Dictionary:
 		"id": String(id),
 		"name": name,
 		"role": String(role),
+		"conversation": String(conversation),
 		"needs": needs.duplicate(),
 		"traits": traits.duplicate(),
 		"relationships": relationships.duplicate(true),
@@ -107,6 +110,7 @@ static func from_dict(d: Dictionary) -> Person:
 	p.id = StringName(d.get("id", ""))
 	p.name = str(d.get("name", d.get("id", "")))
 	p.role = StringName(d.get("role", ""))
+	p.conversation = StringName(str(d.get("conversation", "catch_up")))
 	p.needs = _keyed(d.get("needs", {}), p.needs)
 	p.traits = _keyed(d.get("traits", {}), {})
 	for who: Variant in d.get("relationships", {}):

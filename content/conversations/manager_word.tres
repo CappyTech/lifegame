@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/conversation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"manager_word"
+opener_key = "conv.manager_word.opener"
+timer_seconds = 8.0
+silence_key = "conv.manager_word.silence"
+silence_memory_tag = "brushed_off"
+choices = Array[Dictionary]([{"id": "hear_out", "text_key": "conv.manager_word.hear_out", "reply_key": "conv.manager_word.hear_out.reply", "trust": 4.0, "belonging": 10.0, "memory_tag": "heard_out", "emotional": true}, {"id": "promise", "text_key": "conv.manager_word.promise", "reply_key": "conv.manager_word.promise.reply", "trust": 2.0, "belonging": 6.0, "memory_tag": "promised_more"}, {"id": "dismiss", "text_key": "conv.manager_word.dismiss", "reply_key": "conv.manager_word.dismiss.reply", "trust": -6.0, "resentment": 10.0, "memory_tag": "dismissed", "emotional": true}])

@@ -50,3 +50,11 @@ func test_memories_fade_and_are_forgotten() -> void:
 	People.fade_memories(p)
 	assert_eq(p.memories.size(), 1, "faint memory dropped")
 	assert_near(float(p.memories[0]["weight"]), 0.995, 0.0001, "emotional memory fades slowly")
+
+
+func test_trust_bands() -> void:
+	assert_eq(People.trust_band(-50.0), &"cold", "cold")
+	assert_eq(People.trust_band(-1.0), &"wary", "wary")
+	assert_eq(People.trust_band(10.0), &"civil", "civil")
+	assert_eq(People.trust_band(38.0), &"warm", "warm")
+	assert_eq(People.trust_band(80.0), &"close", "close")

@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Life game"
+run/main_scene="res://ui/game.tscn"
 config/features=PackedStringArray("4.7")
-run/main_scene="res://ui/day_screen.tscn"
 
 [debug]
 
@@ -20,7 +20,6 @@ gdscript/warnings/untyped_declaration=2
 gdscript/warnings/unsafe_property_access=1
 gdscript/warnings/unsafe_method_access=1
 gdscript/warnings/unsafe_cast=1
-gdscript/warnings/unsafe_call_argument=0
 
 [display]
 
@@ -31,10 +30,10 @@ window/stretch/aspect="expand"
 
 [internationalization]
 
-locale/fallback="en"
 locale/translations=PackedStringArray("res://strings/strings.en.translation")
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.957, 0.937, 0.902, 1)

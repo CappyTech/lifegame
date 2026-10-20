@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LifeCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/life_card.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"back_in_town"
+title_key = "card.back_in_town.title"
+surface_keys = Array[String](["card.back_in_town.family", "card.back_in_town.home", "card.back_in_town.key", "card.back_in_town.money"])
+hidden_keys = Array[String](["card.back_in_town.hidden.mate_leaving"])
+start_money = 150
+start_energy = 80
+anchor = &"mate_cab_office"

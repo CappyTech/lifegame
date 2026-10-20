@@ -45,86 +45,156 @@
   "days": [
     [
       {
-        "type": "talk",
+        "type": "start",
+        "activity": "talk",
         "person": "dean"
+      },
+      {
+        "type": "step",
+        "choice": "chat"
       }
     ],
     [
       {
-        "type": "talk",
+        "type": "start",
+        "activity": "talk",
         "person": "dean"
+      },
+      {
+        "type": "step",
+        "choice": "chat"
       }
     ],
     [
       {
-        "type": "talk",
+        "type": "start",
+        "activity": "talk",
         "person": "dean"
+      },
+      {
+        "type": "step",
+        "choice": "chat"
       }
     ],
     [
       {
-        "type": "talk",
+        "type": "start",
+        "activity": "talk",
         "person": "dean"
+      },
+      {
+        "type": "step",
+        "choice": "chat"
       }
     ],
     [
       {
-        "type": "talk",
+        "type": "start",
+        "activity": "talk",
         "person": "dean"
+      },
+      {
+        "type": "step",
+        "choice": "chat"
       }
     ],
     [
       {
-        "type": "talk",
+        "type": "start",
+        "activity": "talk",
         "person": "dean"
+      },
+      {
+        "type": "step",
+        "choice": "chat"
       }
     ],
     [
       {
-        "type": "talk",
+        "type": "start",
+        "activity": "talk",
         "person": "dean"
+      },
+      {
+        "type": "step",
+        "choice": "chat"
       }
     ],
     [
       {
-        "type": "talk",
+        "type": "start",
+        "activity": "talk",
         "person": "dean"
+      },
+      {
+        "type": "step",
+        "choice": "chat"
       }
     ],
     [
       {
-        "type": "talk",
+        "type": "start",
+        "activity": "talk",
         "person": "dean"
+      },
+      {
+        "type": "step",
+        "choice": "chat"
       }
     ],
     [
       {
-        "type": "talk",
+        "type": "start",
+        "activity": "talk",
         "person": "dean"
+      },
+      {
+        "type": "step",
+        "choice": "chat"
       }
     ],
     [
       {
-        "type": "talk",
+        "type": "start",
+        "activity": "talk",
         "person": "dean"
+      },
+      {
+        "type": "step",
+        "choice": "chat"
       }
     ],
     [
       {
-        "type": "talk",
+        "type": "start",
+        "activity": "talk",
         "person": "dean"
+      },
+      {
+        "type": "step",
+        "choice": "chat"
       }
     ],
     [
       {
-        "type": "talk",
+        "type": "start",
+        "activity": "talk",
         "person": "dean"
+      },
+      {
+        "type": "step",
+        "choice": "chat"
       }
     ],
     [
       {
-        "type": "talk",
+        "type": "start",
+        "activity": "talk",
         "person": "dean"
+      },
+      {
+        "type": "step",
+        "choice": "chat"
       }
     ]
   ],
@@ -146,7 +216,6 @@
           "belonging": 97
         }
       }
-    },
-    "event_count": 56
+    }
   }
 }

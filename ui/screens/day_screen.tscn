@@ -1,0 +1,115 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://ui/screens/day_screen.gd" id="1"]
+
+[node name="DayScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Columns" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="Left" type="VBoxContainer" parent="Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/separation = 24
+
+[node name="Report" type="PanelContainer" parent="Columns/Left"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"Night"
+
+[node name="ReportBox" type="VBoxContainer" parent="Columns/Left/Report"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ReportTitle" type="Label" parent="Columns/Left/Report/ReportBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NightHeading"
+text = "Overnight"
+
+[node name="ReportSubtitle" type="Label" parent="Columns/Left/Report/ReportBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NightMuted"
+text = "While you slept"
+
+[node name="ReportRule" type="HSeparator" parent="Columns/Left/Report/ReportBox"]
+layout_mode = 2
+theme_type_variation = &"NightRule"
+
+[node name="ReportLines" type="VBoxContainer" parent="Columns/Left/Report/ReportBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="People" type="PanelContainer" parent="Columns/Left"]
+layout_mode = 2
+theme_type_variation = &"Paper"
+
+[node name="PeopleBox" type="VBoxContainer" parent="Columns/Left/People"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PeopleTitle" type="Label" parent="Columns/Left/People/PeopleBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"Heading"
+text = "People"
+
+[node name="PeopleRule" type="HSeparator" parent="Columns/Left/People/PeopleBox"]
+layout_mode = 2
+theme_type_variation = &"Rule"
+
+[node name="PeopleLines" type="VBoxContainer" parent="Columns/Left/People/PeopleBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Side" type="VBoxContainer" parent="Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 24
+
+[node name="Plan" type="PanelContainer" parent="Columns/Side"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"Paper"
+
+[node name="PlanBox" type="VBoxContainer" parent="Columns/Side/Plan"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PlanTitle" type="Label" parent="Columns/Side/Plan/PlanBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"Heading"
+text = "Today"
+
+[node name="PlanRule" type="HSeparator" parent="Columns/Side/Plan/PlanBox"]
+layout_mode = 2
+theme_type_variation = &"Rule"
+
+[node name="Slots" type="VBoxContainer" parent="Columns/Side/Plan/PlanBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="SleepButton" type="Button" parent="Columns/Side"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"Primary"
+text = "Sleep"

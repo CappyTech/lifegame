@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LifeCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/life_card.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"single_mum_estate"
+title_key = "card.single_mum_estate.title"
+surface_keys = Array[String](["card.single_mum_estate.family", "card.single_mum_estate.home", "card.single_mum_estate.key", "card.single_mum_estate.money"])
+hidden_keys = Array[String](["card.single_mum_estate.hidden.uncle_retiring", "card.single_mum_estate.hidden.mum_council_friend"])
+start_money = 60
+start_energy = 70
+anchor = &"uncle_chippy"

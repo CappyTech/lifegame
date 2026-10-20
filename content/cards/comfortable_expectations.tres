@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LifeCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/life_card.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"comfortable_expectations"
+title_key = "card.comfortable_expectations.title"
+surface_keys = Array[String](["card.comfortable_expectations.family", "card.comfortable_expectations.home", "card.comfortable_expectations.key", "card.comfortable_expectations.money"])
+hidden_keys = Array[String](["card.comfortable_expectations.hidden.dad_watching", "card.comfortable_expectations.hidden.council_sale"])
+start_money = 400
+start_energy = 85
+anchor = &"mum_council_friend"

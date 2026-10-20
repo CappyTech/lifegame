@@ -182,6 +182,18 @@ Map ◀──────────────────(adds new places)�
 
 The context sets what's at stake, the conversation writes memories to the speaker, and anything learned adds a place to the map. That loop is how the town comes to remember you.
 
+**Screens in the build (Stage 1)**
+
+| Screen | Beats | Components |
+| --- | --- | --- |
+| Your hand | Deal, reroll, pick | Three card panels, deal-again |
+| Day | Overnight report, plan three slots, people, sleep | Report panel, slot rows, people list |
+| Catching up | Engage, outcome | SpeakerCard, ContextPanel, Conversation, Outcome |
+| Cab shift | Dispatch (choose), ride (engage), drive (work), drop-off (outcome), end of shift | Map, ContextPanel, SpeakerCard, Conversation, RouteWork, Outcome |
+| Burger shift | Shift (choose), owner or customers (engage), tickets (work), end of shift (outcome) | Map (shop floor), ContextPanel, SpeakerCard, Conversation, TicketWork, Outcome |
+
+The masthead (day, slot, known in town, money, energy) stays across all of them. A root scene owns the state and swaps screens by where the sim is: dealing, living a day, or inside an activity.
+
 **Which components each screen uses**
 
 | Screen | Map | Speaker | Context | Conversation | Work | Outcome |
@@ -198,6 +210,14 @@ The context sets what's at stake, the conversation writes memories to the speake
 - **Wide (desktop):** components sit side by side. Map and work on the left, speaker, context and conversation on the right, a status bar across the top.
 - **Narrow (Steam Deck at 1280×800, small windows):** fewer components per view, stacked in beat order. The conversation takes the full screen when a timer is running, so a choice is never off-screen.
 - **Both:** the status bar (day, time, money, energy) stays visible everywhere, and everything is reachable with a controller.
+
+**Visual direction**
+
+Paper by day, slate by night. The plan for today reads like a page in a notebook or the local paper: warm off-white, ink text, one red-brown accent like a chip-shop sign. The overnight report sits on a dark slate panel, the colour of a northern street before dawn, because it is the one thing that happened without you. Serif for anything the town says to you (report lines, headings, the sleep button); sans for anything you operate (choices, captions, the masthead figures). Hard corners, hairline rules, no gloss, no icons where a word will do.
+
+The masthead across the top is an ink strip with an accent rule under it, carrying day, slot, money and energy. Relationships are shown as words ("warm to you", "wary of you"), never numbers, so the player reads people rather than stats.
+
+Every colour, size and font lives in `tokens/design-tokens.json`; the Theme is generated from it and scenes only pick a type variation (`Heading`, `NightBody`, `Primary`, `Choice`, ...). Fonts are system font stacks for now (Georgia / Noto Serif; Segoe UI / Noto Sans) with a bundled open-licence pair to follow before Steam Deck testing.
 
 ## Conversations and timers
 

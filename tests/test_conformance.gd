@@ -4,6 +4,7 @@ extends TestCase
 ##   {
 ##     "name": "...",
 ##     "seed": 42,
+##     "dealing": false,            true to start before the hand is dealt
 ##     "people": [ Person.from_dict input, ... ],
 ##     "days": [ [choice, choice, ...], ... ],   one list of choices per day
 ##     "expect": {
@@ -43,6 +44,8 @@ func _run_case(path: String) -> void:
 	var label: String = str(c.get("name", path.get_file()))
 
 	var s: WorldState = WorldState.create(int(c["seed"]))
+	if not bool(c.get("dealing", false)):
+		s.phase = WorldState.PHASE_LIVING
 	for pd: Dictionary in c.get("people", []):
 		s.add_person(Person.from_dict(pd))
 	for day_choices: Array in c.get("days", []):

@@ -1,26 +1,49 @@
 {
+  "_direction": "Paper by day, slate by night. The day plan reads like a page in a notebook or a local paper: warm off-white, ink text, one red-brown accent like a chip-shop sign. The overnight report sits on a dark slate panel, the colour of a northern street before dawn. Serif for anything the town says to you; sans for anything you operate. Hard corners, hairline rules, no gloss.",
   "colour": {
-    "background": "#1e1f22",
-    "surface": "#2b2d31",
-    "text": "#e6e6e6",
-    "text_muted": "#9a9da3",
-    "accent": "#d9a441",
-    "positive": "#6fbf73",
-    "negative": "#d9534f"
+    "paper": "#f4efe6",
+    "paper_deep": "#e7dfd0",
+    "ink": "#211e1b",
+    "ink_muted": "#6d665c",
+    "rule": "#cfc5b3",
+    "night": "#1b2128",
+    "night_surface": "#242d36",
+    "night_ink": "#ebe6dc",
+    "night_muted": "#98a2ad",
+    "night_rule": "#3a4652",
+    "accent": "#b2432b",
+    "accent_deep": "#8f3521",
+    "accent_ink": "#f8f2e9",
+    "positive": "#4d7a48",
+    "negative": "#9a2e2e",
+    "focus": "#e2a53b"
+  },
+  "font": {
+    "serif": ["Georgia", "Noto Serif", "DejaVu Serif", "Liberation Serif", "serif"],
+    "sans": ["Segoe UI", "Noto Sans", "DejaVu Sans", "Liberation Sans", "sans-serif"]
+  },
+  "type": {
+    "display": 36,
+    "heading": 26,
+    "body": 19,
+    "small": 16,
+    "caption": 13
   },
   "spacing": {
     "xs": 4,
     "sm": 8,
     "md": 16,
     "lg": 24,
-    "xl": 32
-  },
-  "type": {
-    "body": 18,
-    "small": 15,
-    "heading": 26
+    "xl": 32,
+    "xxl": 48
   },
   "radius": {
-    "panel": 6
+    "panel": 0,
+    "button": 0
+  },
+  "border": {
+    "hairline": 1,
+    "rule": 2,
+    "focus": 3
   }
 }

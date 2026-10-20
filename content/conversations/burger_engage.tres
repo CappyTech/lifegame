@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/conversation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"burger_engage"
+opener_key = "conv.burger_engage.opener"
+timer_seconds = 0.0
+choices = Array[Dictionary]([{"id": "owner", "text_key": "conv.burger_engage.owner", "reply_key": "conv.burger_engage.owner.reply", "trust": 3.0, "belonging": 6.0, "memory_tag": "talked"}, {"id": "customers", "text_key": "conv.burger_engage.customers", "reply_key": "conv.burger_engage.customers.reply"}, {"id": "head_down", "text_key": "conv.burger_engage.head_down"}])
