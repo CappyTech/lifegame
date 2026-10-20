@@ -75,20 +75,14 @@ func refresh(with_state: WorldState) -> void:
 
 func _show_engage() -> void:
 	var dean: Person = state.person(Burger.OWNER)
+	var ctx: Dictionary = Activity.context_for_person(state, dean) if dean != null else {}
 	if dean != null:
 		speaker.show_speaker(SpeakerCard.data_for_person(dean))
 	var conv_id: StringName = StringName(str(state.activity.get("conversation", "burger_engage")))
 	var conv: Conversation = Activity.conversation(state, conv_id)
-	var choices: Array[Dictionary] = []
-	if conv != null:
-		for c: Dictionary in conv.choices:
-			choices.append(c)
-	else:
-		for id: String in Burger.ENGAGE_FALLBACK:
-			choices.append({"id": id, "text_key": "conv.burger_engage." + id})
 	conversation.show_conversation({
-		"opener": UiText.keyed(conv.opener_key if conv != null else "conv.burger_engage.opener"),
-		"choices": UiText.choices(choices),
+		"opener": UiText.keyed(Activity.opener_key(conv, ctx) if conv != null else "conv.burger_engage.opener"),
+		"choices": UiText.choices(Activity.visible_choices(conv, Burger.ENGAGE_FALLBACK, "conv.burger_engage", ctx)),
 		"timer_seconds": conv.timer_seconds if conv != null else 0.0,
 		"silence_text": UiText.keyed(conv.silence_key) if conv != null and conv.silence_key != "" else "",
 	})

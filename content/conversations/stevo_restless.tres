@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/conversation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"stevo_restless"
+opener_key = "conv.stevo_restless.opener"
+openers = Array[Dictionary]([])
+timer_seconds = 0.0
+choices = Array[Dictionary]([{"id": "stay", "text_key": "conv.stevo_restless.stay", "reply_key": "conv.stevo_restless.stay.reply", "trust": 3.0, "belonging": 10.0, "memory_tag": "talked_round", "emotional": true}, {"id": "go", "text_key": "conv.stevo_restless.go", "reply_key": "conv.stevo_restless.go.reply", "trust": 2.0, "memory_tag": "encouraged_to_leave", "emotional": true}, {"id": "own", "text_key": "conv.stevo_restless.own", "reply_key": "conv.stevo_restless.own.reply", "learn_key": "learned.stevo.ambition", "trust": 2.0, "memory_tag": "put_ideas"}])

@@ -6,5 +6,6 @@
 script = ExtResource("1")
 id = &"pat_catch_up"
 opener_key = "conv.pat_catch_up.opener"
+openers = Array[Dictionary]([{"text_key": "conv.pat_catch_up.opener.1", "when": {"first_meeting": true}}, {"text_key": "conv.pat_catch_up.opener.2", "when": {"band": ["close"]}}])
 timer_seconds = 0.0
-choices = Array[Dictionary]([{"id": "chat", "text_key": "conv.pat_catch_up.chat", "reply_key": "conv.pat_catch_up.chat.reply", "trust": 2.0, "belonging": 8.0, "memory_tag": "talked"}, {"id": "help", "text_key": "conv.pat_catch_up.help", "reply_key": "conv.pat_catch_up.help.reply", "trust": 5.0, "belonging": 10.0, "energy": -10, "memory_tag": "helped_out", "emotional": true}, {"id": "quiet", "text_key": "conv.pat_catch_up.quiet", "reply_key": "conv.pat_catch_up.quiet.reply", "belonging": 3.0, "memory_tag": "talked"}])
+choices = Array[Dictionary]([{"id": "chat", "text_key": "conv.pat_catch_up.chat", "reply_key": "conv.pat_catch_up.chat.reply", "trust": 2.0, "belonging": 8.0, "memory_tag": "talked"}, {"id": "help", "text_key": "conv.pat_catch_up.help", "reply_key": "conv.pat_catch_up.help.reply", "trust": 5.0, "belonging": 10.0, "memory_tag": "helped_out", "emotional": true, "energy": -10}, {"id": "quiet", "text_key": "conv.pat_catch_up.quiet", "reply_key": "conv.pat_catch_up.quiet.reply", "belonging": 3.0, "memory_tag": "talked"}])

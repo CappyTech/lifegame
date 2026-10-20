@@ -30,7 +30,7 @@ static func dean() -> Person:
 			"needs": {"money": 0.35, "belonging": 0.4},
 			"traits": {"loyal": -25},
 			"trust": {"player": -0.15},
-			"memories": {"talked": -2, "heard_out": -6, "promised_more": -3, "dismissed": 8, "brushed_off": 6},
+			"memories": {"talked": -2, "asked_after_them": -3, "offered_cover": -6, "heard_out": -6, "promised_more": -3, "dismissed": 8, "brushed_off": 6, "pushed": 2},
 		}],
 	})
 
@@ -62,7 +62,7 @@ static func populate(state: WorldState, card: LifeCard) -> void:
 	match card.anchor:
 		&"uncle_chippy":
 			state.add_person(Person.from_dict({
-				"id": "ray", "name": "Uncle Ray", "role": "chippy_owner", "conversation": "catch_up",
+				"id": "ray", "name": "Uncle Ray", "role": "chippy_owner", "conversation": "ray_catch_up",
 				"needs": {"money": 60, "belonging": 40, "ambition": 20, "rest": 35},
 				"traits": {"loyal": 0.7, "cautious": 0.6},
 				"relationships": {"player": {"trust": 35, "resentment": 0}},
@@ -70,12 +70,12 @@ static func populate(state: WorldState, card: LifeCard) -> void:
 					"id": "sells_up", "size": "big", "base": 15,
 					"needs": {"rest": 0.5, "ambition": 0.1},
 					"trust": {"player": -0.2},
-					"memories": {"helped_out": -8, "talked": -2},
+					"memories": {"helped_out": -8, "talked": -2, "talked_round": -4, "suggested_selling": 6, "offered_to_take_over": -8},
 				}],
 			}))
 		&"mum_council_friend":
 			state.add_person(Person.from_dict({
-				"id": "carol", "name": "Carol", "role": "council_clerk", "conversation": "catch_up",
+				"id": "carol", "name": "Carol", "role": "council_clerk", "conversation": "carol_catch_up",
 				"needs": {"money": 65, "belonging": 55, "ambition": 50, "rest": 60},
 				"traits": {"cautious": 0.8, "loyal": 0.5},
 				"relationships": {"player": {"trust": 20, "resentment": 0}},
@@ -83,7 +83,7 @@ static func populate(state: WorldState, card: LifeCard) -> void:
 			}))
 		&"mate_cab_office":
 			state.add_person(Person.from_dict({
-				"id": "stevo", "name": "Stevo", "role": "cab_controller", "conversation": "catch_up",
+				"id": "stevo", "name": "Stevo", "role": "cab_controller", "conversation": "stevo_catch_up",
 				"needs": {"money": 45, "belonging": 60, "ambition": 55, "rest": 50},
 				"traits": {"loyal": 0.6, "proud": 0.4},
 				"relationships": {"player": {"trust": 45, "resentment": 0}},
@@ -92,7 +92,7 @@ static func populate(state: WorldState, card: LifeCard) -> void:
 					"needs": {"money": 0.3, "ambition": 0.3},
 					"traits": {"loyal": -20},
 					"trust": {"player": -0.1},
-					"memories": {"talked": -3},
+					"memories": {"talked": -3, "talked_round": -6, "encouraged_to_leave": 5, "put_ideas": 2},
 				}],
 			}))
 		&"nan_estate":

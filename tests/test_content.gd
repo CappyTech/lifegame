@@ -36,18 +36,21 @@ func test_content_string_keys_exist() -> void:
 		var res: Resource = load(path)
 		for prop: Dictionary in res.get_property_list():
 			var name: String = prop["name"]
-			var value: Variant = res.get(name)
-			if name.ends_with("_key") and value is String:
-				_check_key(keys, str(value), path, name)
-			elif name.ends_with("_keys") and value is Array:
-				for k: Variant in value:
-					_check_key(keys, str(k), path, name)
-			elif value is Array:
-				for entry: Variant in value:
-					if entry is Dictionary:
-						for k: Variant in entry:
-							if str(k).ends_with("_key"):
-								_check_key(keys, str(entry[k]), path, "%s.%s" % [name, k])
+			_check_value(keys, name, res.get(name), path)
+
+
+## *_key strings, *_keys arrays, and any "*_key" entry inside nested
+## dictionaries or arrays (choices, replies, openers) must exist.
+func _check_value(keys: Dictionary, name: String, value: Variant, path: String) -> void:
+	if value is String:
+		if name.ends_with("_key"):
+			_check_key(keys, value, path, name)
+	elif value is Array:
+		for entry: Variant in value:
+			_check_value(keys, name.trim_suffix("s") if name.ends_with("_keys") else name, entry, path)
+	elif value is Dictionary:
+		for k: Variant in value:
+			_check_value(keys, str(k), value[k], path)
 
 
 ## Every literal "ui.*", "report.*", "rel.*", "outcome.*", "mem.*",
@@ -63,8 +66,17 @@ func test_script_string_keys_exist() -> void:
 			var key: String = m.get_string(1)
 			if key.ends_with("."):
 				continue  # prefix for a key built at runtime
-			if not keys.has(key):
+			if not keys.has(key) and not _is_prefix(keys, key):
 				fail("%s: string key '%s' missing from %s" % [path, key, STRINGS_CSV])
+
+
+## A literal like "conv.ride" is a prefix for keys built at runtime when
+## some real key starts with it.
+func _is_prefix(keys: Dictionary, key: String) -> bool:
+	for k: String in keys:
+		if k.begins_with(key + "."):
+			return true
+	return false
 
 
 func _check_key(keys: Dictionary, key: String, path: String, where: String) -> void:

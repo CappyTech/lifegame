@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/conversation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"stevo_catch_up"
+opener_key = "conv.stevo_catch_up.opener"
+openers = Array[Dictionary]([{"text_key": "conv.stevo_catch_up.opener.1", "when": {"first_meeting": true}}, {"text_key": "conv.stevo_catch_up.opener.2", "when": {"mood": ["low", "tired", "skint"]}}, {"text_key": "conv.stevo_catch_up.opener.3", "when": {"band": ["close"]}}])
+timer_seconds = 0.0
+choices = Array[Dictionary]([{"id": "chat", "text_key": "conv.stevo_catch_up.chat", "reply_key": "conv.stevo_catch_up.chat.reply", "trust": 2.0, "belonging": 8.0, "memory_tag": "talked"}, {"id": "ask", "text_key": "conv.stevo_catch_up.ask", "when": {"mood": ["fine"]}, "reply_key": "conv.stevo_catch_up.ask.reply", "trust": 2.0, "belonging": 4.0, "memory_tag": "asked_after_them"}, {"id": "ask_low", "text_key": "conv.stevo_catch_up.ask_low", "when": {"mood": ["low", "tired", "skint"]}, "reply_key": "conv.stevo_catch_up.ask_low.reply", "next": "stevo_restless", "trust": 3.0, "belonging": 6.0, "memory_tag": "asked_after_them", "emotional": true}, {"id": "quiet", "text_key": "conv.stevo_catch_up.quiet", "reply_key": "conv.stevo_catch_up.quiet.reply", "belonging": 3.0, "memory_tag": "talked"}])

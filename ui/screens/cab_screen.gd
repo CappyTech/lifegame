@@ -103,18 +103,13 @@ func _show_fares(cards: Array) -> void:
 func _show_ride(fare: Dictionary) -> void:
 	var pax: Dictionary = state.passers_by[str(fare["passenger"])]
 	speaker.show_speaker(SpeakerCard.data_for_passenger(pax, str(fare["trait"])))
-	var conv: Conversation = Activity.conversation(state, &"ride")
-	var choices: Array[Dictionary] = []
-	if conv != null:
-		for c: Dictionary in conv.choices:
-			choices.append(c)
-	else:
-		for id: String in Cab.RIDE_FALLBACK:
-			choices.append({"id": id, "text_key": "conv.ride." + id})
+	var conv_id: StringName = StringName(str(fare.get("conversation", "ride")))
+	var conv: Conversation = Activity.conversation(state, conv_id)
+	var ctx: Dictionary = Activity.context_for_passenger(state, pax)
 	conversation.visible = true
 	conversation.show_conversation({
-		"opener": UiText.keyed(conv.opener_key if conv != null else "conv.ride.opener"),
-		"choices": UiText.choices(choices),
+		"opener": UiText.keyed(Activity.opener_key(conv, ctx) if conv != null else "conv.ride.opener"),
+		"choices": UiText.choices(Activity.visible_choices(conv, Cab.RIDE_FALLBACK, "conv.ride", ctx)),
 		"timer_seconds": 0.0,
 	})
 

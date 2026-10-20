@@ -92,3 +92,23 @@ static func trust_band(trust: float) -> StringName:
 	if trust < 50.0:
 		return &"warm"
 	return &"close"
+
+
+## A mood word from needs: the lowest need wins once it is low.
+## One of fine, low, tired, skint. Keys exist in strings as mood.<word>.
+static func mood(p: Person) -> StringName:
+	var lowest: StringName = &""
+	var value: float = 101.0
+	for need: StringName in p.needs:
+		if float(p.needs[need]) < value:
+			value = float(p.needs[need])
+			lowest = need
+	if value >= 40.0:
+		return &"fine"
+	match lowest:
+		&"rest":
+			return &"tired"
+		&"money":
+			return &"skint"
+		_:
+			return &"low"

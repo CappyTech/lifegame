@@ -114,6 +114,14 @@ People are independent agents driven by needs (utility AI). Numbers below are fi
 - **Warnings:** at half a big threshold, a visible behaviour appears in the overnight report before the act.
 - **Player actions change inputs, never outcomes directly.**
 
+## Conversation rules
+
+- One `Conversation` resource is one beat. Chain beats with `next` on a choice; don't write long trees.
+- Every opener, choice and reply may carry a `when` condition; the keys are listed in `content/defs/conversation.gd` and evaluated by `Activity.when_ok`. Prefer a conditional line over a new resource.
+- Choices can `learn_key` something; gate later lines on `learned`. Memory tags written by choices should be weighed by someone's options in `TownBuilder`, or they change nothing.
+- Fallback tables in `Talk`, `Cab` and `Burger` exist for tests without a catalogue; keep them tiny and keep the real words in content.
+- Dialogue is British, present day, northern, short. Nobody explains the mechanics out loud.
+
 ## Testing rules
 
 - **Conformance tests as data.** Each case in `/tests/conformance` is a seed, a list of choices, and the expected events and key state. Add a case for every sim behaviour you add. Update expected values only when the behaviour change is intended, and say so in the commit.

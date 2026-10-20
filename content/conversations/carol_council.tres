@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/conversation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"carol_council"
+opener_key = "conv.carol_council.opener"
+openers = Array[Dictionary]([])
+timer_seconds = 0.0
+choices = Array[Dictionary]([{"id": "thanks", "text_key": "conv.carol_council.thanks", "reply_key": "conv.carol_council.thanks.reply", "learn_key": "rumour.council_sale", "trust": 3.0, "memory_tag": "kept_confidence", "emotional": true}, {"id": "who_else", "text_key": "conv.carol_council.who_else", "reply_key": "conv.carol_council.who_else.reply", "learn_key": "rumour.council_sale", "trust": 1.0, "memory_tag": "asked"}])

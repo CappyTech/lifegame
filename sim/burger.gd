@@ -99,7 +99,8 @@ static func _engage(state: WorldState, a: Dictionary, with: String) -> void:
 	var owner: Person = state.person(OWNER)
 	var conv_id: StringName = StringName(str(a.get("conversation", CONVERSATION_ENGAGE)))
 	var effects: Dictionary = Activity.choice_effects(state, conv_id, with, ENGAGE_FALLBACK)
-	a["reply_key"] = str(effects.get("reply_key", ""))
+	var ctx: Dictionary = Activity.context_for_person(state, owner) if owner != null else {}
+	a["reply_key"] = Activity.reply_key(effects, ctx)
 	var spoke: bool = with == "owner" or conv_id == CONVERSATION_WORD
 	if owner != null and spoke:
 		var e: SimEvent = state.add_event(Activity.EVENT_TALKED, [Person.PLAYER_ID, OWNER], {"choice": with, "conversation": String(conv_id)})

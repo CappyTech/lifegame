@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/conversation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"dean_opens_up"
+opener_key = "conv.dean_opens_up.opener"
+openers = Array[Dictionary]([])
+timer_seconds = 0.0
+choices = Array[Dictionary]([{"id": "cover", "text_key": "conv.dean_opens_up.cover", "reply_key": "conv.dean_opens_up.cover.reply", "trust": 5.0, "belonging": 8.0, "memory_tag": "offered_cover", "emotional": true}, {"id": "head_office", "text_key": "conv.dean_opens_up.head_office", "reply_key": "conv.dean_opens_up.head_office.reply", "learn_key": "learned.dean.franchise", "trust": 2.0, "memory_tag": "asked_after_them"}, {"id": "subject", "text_key": "conv.dean_opens_up.subject", "reply_key": "conv.dean_opens_up.subject.reply", "belonging": 2.0, "memory_tag": "changed_subject"}])

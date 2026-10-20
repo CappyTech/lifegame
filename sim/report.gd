@@ -64,6 +64,9 @@ static func _entry_for(state: WorldState, e: SimEvent) -> Dictionary:
 		Cab.EVENT_RUMOUR:
 			entry["key"] = "report.rumour." + str(e.data.get("about", ""))
 			entry["params"] = {"name": _passenger(state, str(e.data.get("from", "")))}
+		Activity.EVENT_LEARNED:
+			entry["key"] = "report.learned." + str(e.data.get("what", "")).replace(".", "_")
+			entry["params"] = {"name": _name(state, e.actors[1]) if e.actors.size() > 1 else ""}
 		Cab.EVENT_NOTICED:
 			entry["key"] = "report.noticed." + str(e.data.get("place", ""))
 		Activity.EVENT_AUTOMATION_UNLOCKED:

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/conversation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"carol_catch_up"
+opener_key = "conv.carol_catch_up.opener"
+openers = Array[Dictionary]([{"text_key": "conv.carol_catch_up.opener.1", "when": {"first_meeting": true}}, {"text_key": "conv.carol_catch_up.opener.2", "when": {"band": ["warm", "close"]}}])
+timer_seconds = 0.0
+choices = Array[Dictionary]([{"id": "mum", "text_key": "conv.carol_catch_up.mum", "reply_key": "conv.carol_catch_up.mum.reply", "trust": 2.0, "belonging": 5.0, "memory_tag": "talked"}, {"id": "work", "text_key": "conv.carol_catch_up.work", "when": {"trust_max": 24.99}, "reply_key": "conv.carol_catch_up.work.reply", "trust": 1.0, "memory_tag": "asked"}, {"id": "work_trusted", "text_key": "conv.carol_catch_up.work_trusted", "when": {"trust_min": 25}, "reply_key": "conv.carol_catch_up.work_trusted.reply", "next": "carol_council", "trust": 1.0, "memory_tag": "asked"}, {"id": "help", "text_key": "conv.carol_catch_up.help", "reply_key": "conv.carol_catch_up.help.reply", "trust": 4.0, "belonging": 6.0, "memory_tag": "helped_out", "emotional": true, "energy": -8}])

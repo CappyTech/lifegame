@@ -31,20 +31,5 @@ func show_context(data: Dictionary) -> void:
 		pressures.add_child(l)
 
 
-## A mood word from a person's needs: the lowest need wins when it is low.
 static func mood_key_for(p: Person) -> String:
-	var lowest: StringName = &""
-	var value: float = 101.0
-	for need: StringName in p.needs:
-		if float(p.needs[need]) < value:
-			value = float(p.needs[need])
-			lowest = need
-	if value >= 40.0:
-		return "mood.fine"
-	match lowest:
-		&"rest":
-			return "mood.tired"
-		&"money":
-			return "mood.skint"
-		_:
-			return "mood.low"
+	return "mood." + String(People.mood(p))

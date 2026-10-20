@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/conversation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"ray_catch_up"
+opener_key = "conv.ray_catch_up.opener"
+openers = Array[Dictionary]([{"text_key": "conv.ray_catch_up.opener.1", "when": {"mood": ["tired"]}}, {"text_key": "conv.ray_catch_up.opener.2", "when": {"band": ["close"]}}])
+timer_seconds = 0.0
+choices = Array[Dictionary]([{"id": "chat", "text_key": "conv.ray_catch_up.chat", "reply_key": "conv.ray_catch_up.chat.reply", "trust": 2.0, "belonging": 6.0, "memory_tag": "talked"}, {"id": "help", "text_key": "conv.ray_catch_up.help", "reply_key": "conv.ray_catch_up.help.reply", "trust": 5.0, "belonging": 8.0, "memory_tag": "helped_out", "emotional": true, "energy": -10}, {"id": "ask", "text_key": "conv.ray_catch_up.ask", "when": {"mood": ["fine", "low", "skint"]}, "reply_key": "conv.ray_catch_up.ask.reply", "trust": 1.0, "memory_tag": "asked"}, {"id": "ask_tired", "text_key": "conv.ray_catch_up.ask_tired", "when": {"mood": ["tired"]}, "reply_key": "conv.ray_catch_up.ask_tired.reply", "next": "ray_tired", "trust": 3.0, "belonging": 6.0, "memory_tag": "asked_after_them", "emotional": true}])

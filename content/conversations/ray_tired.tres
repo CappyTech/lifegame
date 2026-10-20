@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/conversation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"ray_tired"
+opener_key = "conv.ray_tired.opener"
+openers = Array[Dictionary]([])
+timer_seconds = 0.0
+choices = Array[Dictionary]([{"id": "keep_going", "text_key": "conv.ray_tired.keep_going", "reply_key": "conv.ray_tired.keep_going.reply", "trust": 2.0, "belonging": 6.0, "memory_tag": "talked_round"}, {"id": "sell", "text_key": "conv.ray_tired.sell", "reply_key": "conv.ray_tired.sell.reply", "memory_tag": "suggested_selling", "emotional": true}, {"id": "take_over", "text_key": "conv.ray_tired.take_over", "reply_key": "conv.ray_tired.take_over.reply", "learn_key": "learned.ray.succession", "trust": 6.0, "memory_tag": "offered_to_take_over", "emotional": true}])

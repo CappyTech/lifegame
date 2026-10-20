@@ -6,5 +6,6 @@
 script = ExtResource("1")
 id = &"burger_engage"
 opener_key = "conv.burger_engage.opener"
+openers = Array[Dictionary]([{"text_key": "conv.burger_engage.opener.1", "when": {"mood": ["skint", "low"]}}, {"text_key": "conv.burger_engage.opener.2", "when": {"has_memory": "heard_out"}}])
 timer_seconds = 0.0
-choices = Array[Dictionary]([{"id": "owner", "text_key": "conv.burger_engage.owner", "reply_key": "conv.burger_engage.owner.reply", "trust": 3.0, "belonging": 6.0, "memory_tag": "talked"}, {"id": "customers", "text_key": "conv.burger_engage.customers", "reply_key": "conv.burger_engage.customers.reply"}, {"id": "head_down", "text_key": "conv.burger_engage.head_down"}])
+choices = Array[Dictionary]([{"id": "owner", "text_key": "conv.burger_engage.owner", "reply_key": "conv.burger_engage.owner.reply", "replies": [{"text_key": "conv.burger_engage.owner.reply.1", "when": {"mood": ["skint", "low", "tired"]}}], "trust": 3.0, "belonging": 6.0, "memory_tag": "talked"}, {"id": "customers", "text_key": "conv.burger_engage.customers", "reply_key": "conv.burger_engage.customers.reply"}, {"id": "head_down", "text_key": "conv.burger_engage.head_down"}])

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://content/defs/conversation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"ride_late_lads"
+opener_key = "conv.ride_late_lads.opener"
+openers = Array[Dictionary]([])
+timer_seconds = 0.0
+choices = Array[Dictionary]([{"id": "chat", "text_key": "conv.ride_late_lads.chat", "reply_key": "conv.ride_late_lads.chat.reply", "trust": 2.0, "memory_tag": "chatted"}, {"id": "ask", "text_key": "conv.ride_late_lads.ask", "reply_key": "conv.ride_late_lads.ask.reply", "trust": 2.0, "memory_tag": "asked"}, {"id": "radio", "text_key": "conv.ride_late_lads.radio", "reply_key": "conv.ride_late_lads.radio.reply"}])

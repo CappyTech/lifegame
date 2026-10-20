@@ -6,6 +6,7 @@
 script = ExtResource("1")
 id = &"manager_word"
 opener_key = "conv.manager_word.opener"
+openers = Array[Dictionary]([])
 timer_seconds = 8.0
 silence_key = "conv.manager_word.silence"
 silence_memory_tag = "brushed_off"

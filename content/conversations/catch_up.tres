@@ -6,5 +6,6 @@
 script = ExtResource("1")
 id = &"catch_up"
 opener_key = "conv.catch_up.opener"
+openers = Array[Dictionary]([{"text_key": "conv.catch_up.opener.1", "when": {"band": ["warm", "close"]}}, {"text_key": "conv.catch_up.opener.2", "when": {"band": ["cold", "wary"]}}])
 timer_seconds = 0.0
-choices = Array[Dictionary]([{"id": "chat", "text_key": "conv.catch_up.chat", "reply_key": "conv.catch_up.chat.reply", "trust": 2.0, "belonging": 8.0, "memory_tag": "talked"}, {"id": "ask", "text_key": "conv.catch_up.ask", "reply_key": "conv.catch_up.ask.reply", "trust": 3.0, "belonging": 6.0, "memory_tag": "asked_after_them", "emotional": true}, {"id": "quiet", "text_key": "conv.catch_up.quiet", "reply_key": "conv.catch_up.quiet.reply", "belonging": 3.0, "memory_tag": "talked"}])
+choices = Array[Dictionary]([{"id": "chat", "text_key": "conv.catch_up.chat", "reply_key": "conv.catch_up.chat.reply", "trust": 2.0, "belonging": 8.0, "memory_tag": "talked"}, {"id": "ask", "text_key": "conv.catch_up.ask", "reply_key": "conv.catch_up.ask.reply", "replies": [{"text_key": "conv.catch_up.ask.reply.1", "when": {"mood": ["low", "tired", "skint"]}}], "trust": 3.0, "belonging": 6.0, "memory_tag": "asked_after_them", "emotional": true}, {"id": "quiet", "text_key": "conv.catch_up.quiet", "reply_key": "conv.catch_up.quiet.reply", "belonging": 3.0, "memory_tag": "talked"}])

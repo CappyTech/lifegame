@@ -238,6 +238,18 @@ Real conversations don't wait, so moments that matter run on a timer. Everyday c
 
 The same idea at day scale: a bid closing Friday, a manager's patience wearing thin over a week. The world moves on if you don't act.
 
+**How a conversation is built (in the build)**
+
+A `Conversation` resource is one beat: an opener, up to five replies, their response. Each part can carry a condition checked against the speaker, so the same conversation reads differently depending on who they are to you and what has happened:
+
+- **Openers** change with mood, trust band, memories and whether you've met ("Oh. It's you." after you dismissed him; "...Sorry. Miles away." when he's worn out).
+- **Replies you can make** appear and disappear: "Any chance of more hours?" becomes "Any more hours going yet?" once you've asked; "Heard the council's selling a unit" only exists once you've heard it.
+- **Their response** can branch on the same conditions, and a reply can carry a `next` conversation for a second beat. Asking Dean what's wrong opens him up; asking Carol about work when she trusts you gets you the rumour.
+- **Learning** is a choice effect: a line can add something to what you know, which then unlocks replies elsewhere. The report records it.
+- Passengers get their own ride conversations by type (regular, chatty, the lads), and regulars remember how many rides you've had.
+
+Conditions available to content: trust range or band, mood, has or lacks a memory tag, knows or doesn't know something, an overnight warning has shown, rides so far, first meeting, a need above or below a value, day.
+
 **Memories**
 
 - Meaningful choices write a memory to the speaker ("remembers: covered his shift", "remembers: the car park").

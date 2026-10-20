@@ -50,47 +50,6 @@ card.fresh_out.home,Nan's bungalow on the estate.
 card.fresh_out.key,Your Auntie Pat looks in most days.
 card.fresh_out.money,£40 in a tin.
 card.fresh_out.hidden.nan_knows_everyone,Your nan knows everyone on the estate.
-conv.catch_up.opener,"Alright. Didn't expect to see you today."
-conv.catch_up.chat,Just thought I'd see how you're getting on.
-conv.catch_up.chat.reply,"Oh, you know. Same as ever. Good of you to come, though."
-conv.catch_up.ask,How are you doing? Honestly.
-conv.catch_up.ask.reply,"Honestly? Been better. But it helps, you asking."
-conv.catch_up.quiet,Sit with them a while without saying much.
-conv.catch_up.quiet.reply,They don't seem to mind the quiet.
-conv.dean_catch_up.opener,"Not on shift, are you? Go on then, what is it?"
-conv.dean_catch_up.chat,"Nothing. Just passing. How's the shop?"
-conv.dean_catch_up.chat.reply,"Ticking over. Lunch was murder. Cheers for asking, I suppose."
-conv.dean_catch_up.ask,"You look done in, Dean. What's going on?"
-conv.dean_catch_up.ask.reply,"Rent's gone up, lad's gone off sick, and head office want the numbers by Friday. That's what."
-conv.dean_catch_up.push,"Any chance of more hours? I could do with the money."
-conv.dean_catch_up.push.reply,"Everyone could do with the money. We'll see."
-conv.pat_catch_up.opener,"Come in, come in. Kettle's on. You look thin."
-conv.pat_catch_up.chat,"I'm fine, Pat. How've you been?"
-conv.pat_catch_up.chat.reply,"Oh, mustn't grumble. Our Dawn's been round. Sit down."
-conv.pat_catch_up.help,"Give me that hoover. You sit down for once."
-conv.pat_catch_up.help.reply,"Well. I won't say no. You're a good 'un underneath it all."
-conv.pat_catch_up.quiet,Drink your tea and let her talk.
-conv.pat_catch_up.quiet.reply,"She talks for the both of you, and seems happier for it."
-conv.ride.opener,"They settle in the back. The meter ticks over."
-conv.ride.chat,"Busy day?"
-conv.ride.chat.reply,"Not bad. Be glad to get home, mind."
-conv.ride.ask,"How's things with you, then?"
-conv.ride.ask.reply,"Funny you should ask."
-conv.ride.radio,Put the radio on and leave them to it.
-conv.burger_engage.opener,"Dean looks up from the till. The first orders are already up."
-conv.burger_engage.owner,"How do you want me today, Dean?"
-conv.burger_engage.owner.reply,"Fryer first, then the counter. And keep the gherkins off the kids' ones, they only moan."
-conv.burger_engage.customers,Have a word with the regulars at the counter.
-conv.burger_engage.customers.reply,"Same faces as always. One of them asks after your mum."
-conv.burger_engage.head_down,Keep your head down and get on with it.
-conv.manager_word.opener,"Dean pulls you aside by the freezer. ""Can I have a word? I'm thinking of jacking it in."""
-conv.manager_word.silence,You didn't say anything. He took that as an answer.
-conv.manager_word.hear_out,"Go on. I'm listening."
-conv.manager_word.hear_out.reply,"He talks for ten minutes. Nobody's asked him in months."
-conv.manager_word.promise,"Don't do anything yet. I'll pick up more shifts."
-conv.manager_word.promise.reply,"Aye. Well. We'll see if you do."
-conv.manager_word.dismiss,"You say that every month, Dean."
-conv.manager_word.dismiss.reply,"He goes quiet and doesn't look at you for the rest of the shift."
 mem.talked,Talked to you
 mem.asked_after_them,You asked after them
 mem.pushed,You pushed for more
@@ -137,7 +96,7 @@ ui.report_subtitle,While you slept
 ui.report_first_night,A new life. Nothing has happened yet.
 ui.hand_title,Your hand
 ui.hand_masthead,A new life
-ui.hand_subtitle,"You don't choose where you start. Only what you do with it."
+ui.hand_subtitle,You don't choose where you start. Only what you do with it.
 ui.take_life,Take this life
 ui.deal_again,Deal again ({n} left)
 ui.no_rerolls,This is your hand now.
@@ -187,6 +146,7 @@ ui.context.home,At home
 ui.context.pressure.known,They've had rides with you before.
 ui.context.pressure.rumour,They might know something.
 ui.context.pressure.risk,This one could go wrong.
+ui.context.pressure.warned,Something's been on their mind lately.
 ui.speaker.traits,Traits
 ui.speaker.memories,Remembers
 ui.speaker.none,Nothing yet
@@ -249,3 +209,163 @@ report.person_acted.quit,{name} has handed in their notice.
 report.person_acted.stops_inviting_you_round,{name} has stopped asking you round.
 report.person_acted.sells_up,{name} has put the chippy up for sale.
 report.person_acted.leaves_town,{name} has left town.
+conv.catch_up.opener,Alright. Didn't expect to see you today.
+conv.catch_up.opener.1,"Alright, love. Kettle's just boiled."
+conv.catch_up.opener.2,Oh. What do you want?
+conv.catch_up.chat,Just thought I'd see how you're getting on.
+conv.catch_up.chat.reply,"Oh, you know. Same as ever. Good of you to come, though."
+conv.catch_up.ask,How are you doing? Honestly.
+conv.catch_up.ask.reply,Can't complain. Nobody'd listen if I did.
+conv.catch_up.ask.reply.1,"Honestly? Been better. But it helps, you asking."
+conv.catch_up.quiet,Sit with them a while without saying much.
+conv.catch_up.quiet.reply,They don't seem to mind the quiet.
+conv.dean_catch_up.opener,"Not on shift, are you? Go on then, what is it?"
+conv.dean_catch_up.opener.1,Oh. It's you.
+conv.dean_catch_up.opener.2,...Sorry. Miles away. What?
+conv.dean_catch_up.opener.3,"Alright, you. Come to see how the other half live?"
+conv.dean_catch_up.chat,Nothing. Just passing. How's the shop?
+conv.dean_catch_up.chat.reply,"Ticking over. Lunch was murder. Cheers for asking, I suppose."
+conv.dean_catch_up.chat.reply.1,Takings are down and the rent's not. That's how the shop is.
+conv.dean_catch_up.ask,"You look done in, Dean. What's going on?"
+conv.dean_catch_up.ask.reply,Where do you want me to start.
+conv.dean_catch_up.push,Any chance of more hours? I could do with the money.
+conv.dean_catch_up.push.reply,Everyone could do with the money. We'll see.
+conv.dean_catch_up.push_again,Any more hours going yet?
+conv.dean_catch_up.push_again.reply,I said we'll see. Still seeing.
+conv.dean_catch_up.tip_off,"Heard the council's selling a unit on the parade. Cheap, apparently."
+conv.dean_catch_up.tip_off.reply,Are they now. ...Where'd you hear that?
+conv.dean_opens_up.opener,"Rent's gone up. Jordan's off sick again, or says he is. And head office want the numbers by Friday and I've not started."
+conv.dean_opens_up.cover,I'll take Jordan's shifts till he's back.
+conv.dean_opens_up.cover.reply,...Yeah? Right. I'll put you down. Don't make me look daft.
+conv.dean_opens_up.head_office,Head office? I thought it was your place.
+conv.dean_opens_up.head_office.reply,"Mine? No, lad. I run it for a bloke in Harrogate who's never set foot in it."
+conv.dean_opens_up.subject,Rough. You watching the match tonight?
+conv.dean_opens_up.subject.reply,"He looks at you a second too long, then shrugs. 'Might do.'"
+conv.pat_catch_up.opener,Shoes off. Kettle's on.
+conv.pat_catch_up.opener.1,"Come in, come in. Kettle's on. You look thin."
+conv.pat_catch_up.opener.2,There you are. I've done a crumble.
+conv.pat_catch_up.chat,"I'm fine, Pat. How've you been?"
+conv.pat_catch_up.chat.reply,"Oh, mustn't grumble. Our Dawn's been round. Sit down."
+conv.pat_catch_up.help,Give me that hoover. You sit down for once.
+conv.pat_catch_up.help.reply,Well. I won't say no. You're a good 'un underneath it all.
+conv.pat_catch_up.quiet,Drink your tea and let her talk.
+conv.pat_catch_up.quiet.reply,"She talks for the both of you, and seems happier for it."
+conv.carol_catch_up.opener,Oh hello. Your mum alright?
+conv.carol_catch_up.opener.1,"You're Sandra's, aren't you? Come in, come in."
+conv.carol_catch_up.opener.2,"Hello, stranger. Tea?"
+conv.carol_catch_up.mum,Mum's fine. Says hello.
+conv.carol_catch_up.mum.reply,"She never does, but tell her the same."
+conv.carol_catch_up.work,How's things at the council?
+conv.carol_catch_up.work.reply,"Oh, you know. Forms. Meetings about forms."
+conv.carol_catch_up.work_trusted,How's things at the council?
+conv.carol_catch_up.work_trusted.reply,"She lowers her voice, which in Carol's kitchen means something."
+conv.carol_catch_up.help,Anything I can do while I'm here?
+conv.carol_catch_up.help.reply,You can take that bag to the tip if you're offering.
+conv.carol_council.opener,"Between you and me. There's a unit on the parade the council want shot of. It's going in the paper next month, but they'd take an offer before."
+conv.carol_council.thanks,I'll keep it to myself.
+conv.carol_council.thanks.reply,You do that.
+conv.carol_council.who_else,Who else knows?
+conv.carol_council.who_else.reply,Half the council and none of the town. Don't make me regret this.
+conv.stevo_catch_up.opener,Alright. Quiet one tonight.
+conv.stevo_catch_up.opener.1,"Look what the cat dragged in. Sit down, I'm on the radio."
+conv.stevo_catch_up.opener.2,Long day. Don't ask.
+conv.stevo_catch_up.opener.3,"Alright, kid."
+conv.stevo_catch_up.chat,How's the office?
+conv.stevo_catch_up.chat.reply,"Same drivers, same moans. Big Tony's still owed for August."
+conv.stevo_catch_up.ask,Still happy here?
+conv.stevo_catch_up.ask.reply,Happy's a big word. I'm here.
+conv.stevo_catch_up.ask_low,You alright? You don't sound it.
+conv.stevo_catch_up.ask_low.reply,He turns the radio down.
+conv.stevo_catch_up.quiet,Sit in the office and listen to the radio with him.
+conv.stevo_catch_up.quiet.reply,Cars come and go. It's company.
+conv.stevo_restless.opener,I've been offered a job in Manchester. Dispatch for a proper firm. Twice the money.
+conv.stevo_restless.stay,Who'd run this place without you?
+conv.stevo_restless.stay.reply,Exactly what I said to myself. Doesn't pay the gas.
+conv.stevo_restless.go,Take it. You're wasted here.
+conv.stevo_restless.go.reply,He laughs. 'Cheers. I think.'
+conv.stevo_restless.own,Could you not run your own? Here?
+conv.stevo_restless.own.reply,...Don't put ideas in my head.
+conv.ray_catch_up.opener,Now then. You eaten?
+conv.ray_catch_up.opener.1,"Hiya, love. Grab a stool, me feet are killing me."
+conv.ray_catch_up.opener.2,There you are. Chips are on.
+conv.ray_catch_up.chat,Busy?
+conv.ray_catch_up.chat.reply,Friday was. Rest of the week you could fire a cannon through here.
+conv.ray_catch_up.help,Give us that spatula. Sit down.
+conv.ray_catch_up.help.reply,I won't argue.
+conv.ray_catch_up.ask,How's the knee?
+conv.ray_catch_up.ask.reply,Attached.
+conv.ray_catch_up.ask_tired,"You look shattered, Ray."
+conv.ray_catch_up.ask_tired.reply,"He wipes his hands and sits down, which he never does."
+conv.ray_tired.opener,"I'm about done, if I'm honest. Forty years of frying. Your auntie says sell up, and she might be right."
+conv.ray_tired.keep_going,You'd be bored in a week.
+conv.ray_tired.keep_going.reply,Aye. Probably.
+conv.ray_tired.sell,Maybe she's right.
+conv.ray_tired.sell.reply,He nods slowly and doesn't say anything for a bit.
+conv.ray_tired.take_over,What if someone kept it in the family?
+conv.ray_tired.take_over.reply,He looks at you properly for the first time in years. 'Someone like who?'
+conv.ride.opener,They settle in the back. The meter ticks over.
+conv.ride.opener.1,"'Usual, is it?' they say, before you've asked."
+conv.ride.chat,Busy day?
+conv.ride.chat.reply,"Not bad. Be glad to get home, mind."
+conv.ride.ask,"How's things with you, then?"
+conv.ride.ask.reply,"'Oh, you know.' They look out of the window."
+conv.ride.ask.reply.1,Funny you should ask.
+conv.ride.radio,Put the radio on and leave them to it.
+conv.ride_regular.opener,They settle in the back like they own it.
+conv.ride_regular.opener.1,"'Usual, is it?' they say, before you've asked."
+conv.ride_regular.opener.2,"'You're new,' they say. 'Where's Tony?'"
+conv.ride_regular.chat,Busy day?
+conv.ride_regular.chat.reply,Same as every day. You'll learn.
+conv.ride_regular.chat.reply.1,'Better now I've got a proper driver.' High praise.
+conv.ride_regular.ask,"How's things with you, then?"
+conv.ride_regular.ask.reply,"'Oh, you know.' They look out of the window."
+conv.ride_regular.ask.reply.1,Funny you should ask.
+conv.ride_regular.radio,Put the radio on and leave them to it.
+conv.ride_chatty.opener,They're talking before the door's shut.
+conv.ride_chatty.chat,"Go on, then. What's happened?"
+conv.ride_chatty.chat.reply,Twenty minutes later you know their sister's business and most of the street's.
+conv.ride_chatty.ask,"How's things with you, then?"
+conv.ride_chatty.ask.reply,"'Me? Oh, don't get me started.' Too late."
+conv.ride_chatty.radio,Turn the radio up a notch.
+conv.ride_chatty.radio.reply,They talk over it.
+conv.ride_late_lads.opener,"Three of them, one already asleep. The other two are singing."
+conv.ride_late_lads.chat,"Good night, lads?"
+conv.ride_late_lads.chat.reply,They want to know if you'll do the drive-thru. You won't.
+conv.ride_late_lads.ask,"Where've you been, then?"
+conv.ride_late_lads.ask.reply,"'Big night, pal. BIG night.' That's all you get."
+conv.ride_late_lads.radio,Radio on. Eyes front.
+conv.ride_late_lads.radio.reply,"The singing gets worse. It doesn't get louder, so that's something."
+conv.burger_engage.opener,Dean looks up from the till. The first orders are already up.
+conv.burger_engage.opener.1,Dean's counting the float twice. 'Oh. You're in. Good.'
+conv.burger_engage.opener.2,Dean nods at you. 'Alright. Fryer's on.' It's almost warm.
+conv.burger_engage.owner,"How do you want me today, Dean?"
+conv.burger_engage.owner.reply,"Fryer first, then the counter. And keep the gherkins off the kids' ones, they only moan."
+conv.burger_engage.owner.reply.1,'Just... get through it. Please.' He means it kindly.
+conv.burger_engage.customers,Have a word with the regulars at the counter.
+conv.burger_engage.customers.reply,Same faces as always. One of them asks after your mum.
+conv.burger_engage.head_down,Keep your head down and get on with it.
+conv.manager_word.opener,"Dean pulls you aside by the freezer. ""Can I have a word? I'm thinking of jacking it in."""
+conv.manager_word.silence,You didn't say anything. He took that as an answer.
+conv.manager_word.hear_out,Go on. I'm listening.
+conv.manager_word.hear_out.reply,He talks for ten minutes. Nobody's asked him in months.
+conv.manager_word.promise,Don't do anything yet. I'll pick up more shifts.
+conv.manager_word.promise.reply,Aye. Well. We'll see if you do.
+conv.manager_word.dismiss,"You say that every month, Dean."
+conv.manager_word.dismiss.reply,He goes quiet and doesn't look at you for the rest of the shift.
+mem.offered_cover,You offered to cover shifts
+mem.changed_subject,You changed the subject
+mem.tipped_off,You tipped them off
+mem.kept_confidence,You kept a confidence
+mem.talked_round,You talked them round
+mem.encouraged_to_leave,You told them to go for it
+mem.put_ideas,You put ideas in their head
+mem.suggested_selling,You said they should sell
+mem.offered_to_take_over,You offered to take it on
+learned.dean.franchise,Dean doesn't own the burger shop. A man in Harrogate does.
+learned.stevo.ambition,"Stevo could run his own cab office, if someone pushed."
+learned.ray.succession,Ray would hand the chippy to family if anyone asked.
+report.learned.rumour_council_sale,{name} told you the council is selling a unit on the parade.
+report.learned.learned_dean_franchise,You found out Dean only manages the burger shop.
+report.learned.learned_stevo_ambition,Stevo let slip he's thought about running his own office.
+report.learned.learned_ray_succession,"Ray would keep the chippy in the family, if asked."
+report.learned,You learned something from {name}.

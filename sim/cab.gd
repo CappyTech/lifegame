@@ -33,6 +33,8 @@ const FALLBACK_ZONES: Dictionary = {
 ## Places worth noticing on a detour, in a fixed order.
 const SIGHTS: Array[String] = ["chippy", "retail_park", "crown", "high_street"]
 
+const RIDE_CONVERSATION: StringName = &"ride"
+
 const RIDE_FALLBACK: Dictionary = {
 	"chat": {"id": "chat", "trust": 3.0, "belonging": 4.0, "memory_tag": "chatted"},
 	"ask": {"id": "ask", "trust": 4.0, "belonging": 3.0, "memory_tag": "asked"},
@@ -103,6 +105,7 @@ static func step(state: WorldState, choice: Dictionary) -> void:
 			if idx < 0 or idx >= fares.size():
 				return
 			a["fare"] = fares[idx]
+			a["fare"]["conversation"] = String(ride_conversation(state, str(a["fare"]["trait"])))
 			state.add_event(EVENT_FARE_TAKEN, [Person.PLAYER_ID], {"passenger": a["fare"]["passenger"], "destination": a["fare"]["destination"]})
 			a["phase"] = "drive" if str(a["fare"]["trait"]) == "quiet" else "ride"
 		"ride":
@@ -120,14 +123,25 @@ static func step(state: WorldState, choice: Dictionary) -> void:
 				a["phase"] = "choose_fare"
 
 
+## The conversation a passenger has in the back: ride_<trait> when content
+## has one, else the generic ride.
+static func ride_conversation(state: WorldState, trait_name: String) -> StringName:
+	var specific: StringName = StringName("ride_" + trait_name)
+	if Activity.conversation(state, specific) != null:
+		return specific
+	return RIDE_CONVERSATION
+
+
 static func _ride(state: WorldState, a: Dictionary, said: String) -> void:
 	var fare: Dictionary = a["fare"]
 	var pid: String = str(fare["passenger"])
 	var pax: Dictionary = state.passers_by[pid]
-	var effects: Dictionary = Activity.choice_effects(state, &"ride", said, RIDE_FALLBACK)
+	var conv_id: StringName = StringName(str(fare.get("conversation", RIDE_CONVERSATION)))
+	var effects: Dictionary = Activity.choice_effects(state, conv_id, said, RIDE_FALLBACK)
+	var ctx: Dictionary = Activity.context_for_passenger(state, pax)
 	pax["trust"] = float(pax["trust"]) + float(effects.get("trust", 0.0))
 	fare["said"] = said
-	fare["reply_key"] = str(effects.get("reply_key", ""))
+	fare["reply_key"] = Activity.reply_key(effects, ctx)
 	if said == "ask" and int(pax["rides"]) >= 1 and str(pax["knows"]) != "":
 		var key: String = "rumour." + str(pax["knows"])
 		if not state.learned.has(key):
